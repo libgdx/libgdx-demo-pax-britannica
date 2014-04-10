@@ -25,7 +25,6 @@ import de.swagner.paxbritannica.factory.FactoryProduction;
 import de.swagner.paxbritannica.factory.HardEnemyProduction;
 import de.swagner.paxbritannica.factory.MediumEnemyProduction;
 import de.swagner.paxbritannica.factory.PlayerProduction;
-import de.swagner.paxbritannica.help.ScreenshotSaver;
 import de.swagner.paxbritannica.mainmenu.MainMenu;
 
 public class GameScreen extends DefaultScreen implements InputProcessor {
@@ -596,17 +595,6 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 		if(numPlayers >3 && keycode == Input.Keys.L && GameInstance.getInstance().factorys.size>3) {
 			((FactoryProduction) GameInstance.getInstance().factorys.get(3)).button_held = true;
 			touchedP4 = true;
-		} 
-		
-		if(GameInstance.getInstance().debugMode) {				
-			if(keycode == Input.Keys.F8) {
-				try {
-					ScreenshotSaver.saveScreenshot("screenshot");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}		
 		}
 		return false;
 	}

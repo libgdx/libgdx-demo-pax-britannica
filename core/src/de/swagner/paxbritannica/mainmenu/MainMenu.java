@@ -1,7 +1,5 @@
 package de.swagner.paxbritannica.mainmenu;
 
-import java.io.IOException;
-
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -24,7 +22,6 @@ import de.swagner.paxbritannica.GameScreen;
 import de.swagner.paxbritannica.Resources;
 import de.swagner.paxbritannica.background.BackgroundFXRenderer;
 import de.swagner.paxbritannica.help.Help;
-import de.swagner.paxbritannica.help.ScreenshotSaver;
 import de.swagner.paxbritannica.settings.Settings;
 
 public class MainMenu extends DefaultScreen implements InputProcessor {
@@ -397,16 +394,7 @@ public class MainMenu extends DefaultScreen implements InputProcessor {
 			changeToScreen = 1;
 		}
 				
-		if(GameInstance.getInstance().debugMode) {				
-			if(keycode == Input.Keys.F8) {
-				try {
-					ScreenshotSaver.saveScreenshot("screenshot");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}		
-		}
+
 		return false;
 	}
 
