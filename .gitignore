@@ -6,7 +6,7 @@
 hs_err_pid*
 
 ## GWT
-
+war/
 war/gwt_bree/
 gwt-unitCache/
 .apt_generated/
@@ -27,7 +27,8 @@ out/
 com_crashlytics_export_strings.xml
 
 ## Eclipse
-
+.classpath
+.project
 .metadata
 bin/
 tmp/
