@@ -280,6 +280,8 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 		Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
 	}
 	
+	Vector3 tmp = new Vector3();
+	
 	@Override
 	public void resize(int width, int height) {
 		this.width = width;
@@ -361,7 +363,7 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			touchAreaP2 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+this.height, 0));
 			
 			stouchAreaP1.setPosition(touchAreaP1.min.x, touchAreaP1.getCenter().y-40);
-			p1.setPosition(touchAreaP1.min.tmp().x+10, touchAreaP1.getCenter().y-105);
+			p1.setPosition(touchAreaP1.min.x+10, touchAreaP1.getCenter().y-105);
 			stouchAreaP2.setPosition(touchAreaP2.max.x - 170, touchAreaP2.getCenter().y-40);
 			p2.setPosition(touchAreaP2.max.x-190, touchAreaP2.getCenter().y-15);
 		} else if(numPlayers == 3) {
@@ -378,7 +380,7 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			touchAreaP3 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+this.height, 0));
 			
 			stouchAreaP1.setPosition(touchAreaP1.min.x, touchAreaP1.getCenter().y-40);
-			p1.setPosition(touchAreaP1.min.tmp().x+10, touchAreaP1.getCenter().y-105);
+			p1.setPosition(touchAreaP1.min.x+10, touchAreaP1.getCenter().y-105);
 			stouchAreaP2.setPosition(touchAreaP2.min.x, touchAreaP2.getCenter().y-40);
 			p2.setPosition(touchAreaP2.min.x+10, touchAreaP2.getCenter().y-105);
 			stouchAreaP3.setPosition(touchAreaP3.max.x - 170, touchAreaP3.getCenter().y-40);
@@ -400,7 +402,7 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			touchAreaP4 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2)+(this.height/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+this.height, 0));
 			
 			stouchAreaP1.setPosition(touchAreaP1.min.x, touchAreaP1.getCenter().y-40);
-			p1.setPosition(touchAreaP1.min.tmp().x+10, touchAreaP1.getCenter().y-105);
+			p1.setPosition(touchAreaP1.min.x+10, touchAreaP1.getCenter().y-105);
 			stouchAreaP2.setPosition(touchAreaP2.min.x, touchAreaP2.getCenter().y-40);
 			p2.setPosition(touchAreaP2.min.x+10, touchAreaP2.getCenter().y-105);
 			stouchAreaP3.setPosition(touchAreaP3.max.x - 170, touchAreaP3.getCenter().y-40);
