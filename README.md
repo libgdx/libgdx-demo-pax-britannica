@@ -7,6 +7,11 @@ libgdx-demo-pax britannica
 
 Pax Britannica is a one-button [RTS game by nofundsgames](http://paxbritannica.henk.ca/), which was ported to libgdx by [Stefan Wagner](http://bompoblog.tumblr.com/).
 
+### Try it here 
+  * [WebGL/Browser](http://libgdx.badlogicgames.com/demos/paxbritannica)
+  * [Desktop](http://libgdx.badlogicgames.com/demos/paxbritannica/paxbritannica.jar)
+  * [Android](http://libgdx.badlogicgames.com/demos/paxbritannica/paxbritannica.apk)
+
 ### Running
 * [Setup your development environment](https://github.com/libgdx/libgdx/wiki)
 * Clone the repository or download and extract the ZIP file
