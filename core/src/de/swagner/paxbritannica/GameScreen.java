@@ -350,8 +350,8 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			
 			touchAreaP1 = new BoundingBox(new Vector3(-((this.width-800)/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+(this.width), -((this.height-480)/2)+this.height, 0));
 			
-			stouchAreaP1.setPosition(touchAreaP1.min.x, touchAreaP1.getCenter().y-40);
-			p1.setPosition(touchAreaP1.min.x+10, touchAreaP1.getCenter().y-105);
+			stouchAreaP1.setPosition(touchAreaP1.min.x, touchAreaP1.getCenterY()-40);
+			p1.setPosition(touchAreaP1.min.x+10, touchAreaP1.getCenterX()-105);
 		} else if(numPlayers == 2) {
 			p1.setRotation(-90);
 			p2.setRotation(90);
@@ -362,10 +362,10 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			touchAreaP1 = new BoundingBox(new Vector3(-((this.width-800)/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2)+this.height, 0));
 			touchAreaP2 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+this.height, 0));
 			
-			stouchAreaP1.setPosition(touchAreaP1.min.x, touchAreaP1.getCenter().y-40);
-			p1.setPosition(touchAreaP1.min.x+10, touchAreaP1.getCenter().y-105);
-			stouchAreaP2.setPosition(touchAreaP2.max.x - 170, touchAreaP2.getCenter().y-40);
-			p2.setPosition(touchAreaP2.max.x-190, touchAreaP2.getCenter().y-15);
+			stouchAreaP1.setPosition(touchAreaP1.min.x, touchAreaP1.getCenterY()-40);
+			p1.setPosition(touchAreaP1.min.x+10, touchAreaP1.getCenterY()-105);
+			stouchAreaP2.setPosition(touchAreaP2.max.x - 170, touchAreaP2.getCenterY()-40);
+			p2.setPosition(touchAreaP2.max.x-190, touchAreaP2.getCenterY()-15);
 		} else if(numPlayers == 3) {
 			p1.setRotation(-90);
 			p2.setRotation(-90);
@@ -379,12 +379,12 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			touchAreaP2 = new BoundingBox(new Vector3(-((this.width-800)/2), -((this.height-480)/2)+(this.height/2), 0),new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2)+this.height, 0));
 			touchAreaP3 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+this.height, 0));
 			
-			stouchAreaP1.setPosition(touchAreaP1.min.x, touchAreaP1.getCenter().y-40);
-			p1.setPosition(touchAreaP1.min.x+10, touchAreaP1.getCenter().y-105);
-			stouchAreaP2.setPosition(touchAreaP2.min.x, touchAreaP2.getCenter().y-40);
-			p2.setPosition(touchAreaP2.min.x+10, touchAreaP2.getCenter().y-105);
-			stouchAreaP3.setPosition(touchAreaP3.max.x - 170, touchAreaP3.getCenter().y-40);
-			p3.setPosition(touchAreaP3.max.x-190, touchAreaP3.getCenter().y-15);
+			stouchAreaP1.setPosition(touchAreaP1.min.x, touchAreaP1.getCenterY()-40);
+			p1.setPosition(touchAreaP1.min.x+10, touchAreaP1.getCenterY()-105);
+			stouchAreaP2.setPosition(touchAreaP2.min.x, touchAreaP2.getCenterY()-40);
+			p2.setPosition(touchAreaP2.min.x+10, touchAreaP2.getCenterY()-105);
+			stouchAreaP3.setPosition(touchAreaP3.max.x - 170, touchAreaP3.getCenterY()-40);
+			p3.setPosition(touchAreaP3.max.x-190, touchAreaP3.getCenterY()-15);
 		} else if(numPlayers == 4) {
 			p1.setRotation(-90);
 			p2.setRotation(-90);
@@ -401,14 +401,14 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			touchAreaP3 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+(this.height/2), 0));
 			touchAreaP4 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2)+(this.height/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+this.height, 0));
 			
-			stouchAreaP1.setPosition(touchAreaP1.min.x, touchAreaP1.getCenter().y-40);
-			p1.setPosition(touchAreaP1.min.x+10, touchAreaP1.getCenter().y-105);
-			stouchAreaP2.setPosition(touchAreaP2.min.x, touchAreaP2.getCenter().y-40);
-			p2.setPosition(touchAreaP2.min.x+10, touchAreaP2.getCenter().y-105);
-			stouchAreaP3.setPosition(touchAreaP3.max.x - 170, touchAreaP3.getCenter().y-40);
-			p3.setPosition(touchAreaP3.max.x-190, touchAreaP3.getCenter().y-15);
-			stouchAreaP4.setPosition(touchAreaP4.max.x - 170, touchAreaP4.getCenter().y-40);
-			p4.setPosition(touchAreaP4.max.x-190, touchAreaP4.getCenter().y-15);
+			stouchAreaP1.setPosition(touchAreaP1.min.x, touchAreaP1.getCenterY()-40);
+			p1.setPosition(touchAreaP1.min.x+10, touchAreaP1.getCenterY()-105);
+			stouchAreaP2.setPosition(touchAreaP2.min.x, touchAreaP2.getCenterY()-40);
+			p2.setPosition(touchAreaP2.min.x+10, touchAreaP2.getCenterY()-105);
+			stouchAreaP3.setPosition(touchAreaP3.max.x - 170, touchAreaP3.getCenterY()-40);
+			p3.setPosition(touchAreaP3.max.x-190, touchAreaP3.getCenterY()-15);
+			stouchAreaP4.setPosition(touchAreaP4.max.x - 170, touchAreaP4.getCenterY()-40);
+			p4.setPosition(touchAreaP4.max.x-190, touchAreaP4.getCenterY()-15);
 		}
 	}
 
