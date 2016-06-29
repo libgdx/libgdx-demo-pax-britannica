@@ -10,6 +10,11 @@ Pax Britannica is a one-button [RTS game by nofundsgames](http://paxbritannica.h
 ### Try it here 
   * [WebGL/Browser](http://libgdx.badlogicgames.com/demos/paxbritannica)
   * [Desktop](http://libgdx.badlogicgames.com/demos/paxbritannica/paxbritannica.jar)
+  * Desktop self-contained native bundles created with
+    [Excelsior JET](http://www.excelsiorjet.com) [Gradle Plugin](https://github.com/excelsior-oss/excelsior-jet-gradle-plugin):
+    - [Windows](http://www.excelsior-usa.com/download/jet/gradle/pax-britannica-windows-x86.exe)
+    - [macOS](http://www.excelsior-usa.com/download/jet/gradle/pax-britannica-osx-amd64.pkg)
+    - [Linux](http://www.excelsior-usa.com/download/jet/gradle/pax-britannica-linux-amd64.bin)
   * [Android](http://libgdx.badlogicgames.com/demos/paxbritannica/paxbritannica.apk)
 
 ### Running

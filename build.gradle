@@ -30,6 +30,7 @@ buildscript {
         classpath "de.richsource.gradle.plugins:gwt-gradle-plugin:$gwtGradleVersion"
         classpath "com.android.tools.build:gradle:$androidGradleToolsVersion"
         classpath "com.mobidevelop.robovm:robovm-gradle-plugin:$roboVMGradleVersion"
+        classpath "com.excelsiorjet:excelsior-jet-gradle-plugin:0.7.0"
     }
 }
 
@@ -59,11 +60,32 @@ project(":core") {
 
 project(":desktop") {
     apply plugin: "java"
+    apply plugin: 'excelsiorJet'
 
     dependencies {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    }
+
+    excelsiorJet {
+        product = 'Pax Britannica'
+        vendor  = 'LibGDX'
+        outputName = 'Pax Britannica'
+        artifactName = 'Pax Britannica'
+
+        mainClass 'de.swagner.paxbritannica.desktop.DesktopLauncher'
+        packageFilesDir(new File(project.rootProject.projectDir, "/android/assets"))
+
+        hideConsole = true
+        globalOptimizer = true
+
+        packaging = 'native-bundle'
+        jvmArgs = ["-Duser.dir=*{exe.dir}", "-Djet.cd.to.user.dir"]
+
+        osxBundle {
+            identifier = 'libgdx.paxbritannica'
+        }
     }
 }
 
