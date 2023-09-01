@@ -686,4 +686,8 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 		return false;
 	}
 
+	@Override
+	public boolean touchCancelled(int screenX, int screenY, int pointer, int button) {
+		return false;
+	}
 }

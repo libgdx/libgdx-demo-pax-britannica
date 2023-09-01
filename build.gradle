@@ -1,23 +1,13 @@
-import groovy.json.JsonSlurper
-
 buildscript {
-
-    ant.get(src: 'http://libgdx.com/service/versions.json', dest: 'versions.json')
-    def versionFile = file('versions.json')
-    def json
-    if (versionFile.exists()) {
-        json = new JsonSlurper().parseText(versionFile.text)
-    } else throw new GradleException("Unable to retrieve latest versions, please check your internet connection")
-
     ext {
-        gdxVersion = json.libgdxRelease
-        roboVMVersion = json.robovmVersion
-        roboVMGradleVersion = json.robovmPluginVersion
-        androidToolsVersion = json.androidBuildtoolsVersion
-        androidSDKVersion = json.androidSDKVersion
-        androidGradleToolsVersion = json.androidGradleToolVersion
-        gwtVersion = json.gwtVersion
-        gwtGradleVersion = json.gwtPluginVersion
+        gdxVersion = '1.12.0'
+        roboVMVersion = '2.3.19'
+        roboVMGradleVersion = '2.3.19'
+        androidToolsVersion = '33.0.2'
+        androidGradleToolsVersion = '8.0.2'
+        gwtVersion = '2.8.2'
+        gwtGradleVersion = '1.1.19'
+        gwtGrettyVersion = '3.1.0'
     }
 
     repositories {
@@ -30,9 +20,11 @@ buildscript {
 
     dependencies {
         classpath "org.wisepersist:gwt-gradle-plugin:$gwtGradleVersion"
+        classpath "org.gretty:gretty:$gwtGrettyVersion"
         classpath "com.android.tools.build:gradle:$androidGradleToolsVersion"
         classpath "com.mobidevelop.robovm:robovm-gradle-plugin:$roboVMGradleVersion"
-        classpath "com.excelsiorjet:excelsior-jet-gradle-plugin:0.7.0"
+
+//        classpath "com.excelsiorjet:excelsior-jet-gradle-plugin:0.7.0"
     }
 }
 
@@ -54,42 +46,42 @@ allprojects {
 }
 
 project(":core") {
-    apply plugin: "java"
+    apply plugin: "java-library"
 
     dependencies {
-        compile "com.badlogicgames.gdx:gdx:$gdxVersion"
+        api "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
 }
 
 project(":desktop") {
     apply plugin: "java"
-    apply plugin: 'excelsiorJet'
+//    apply plugin: 'excelsiorJet'
 
     dependencies {
-        compile project(":core")
-        compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+        implementation project(":core")
+        implementation "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
     }
 
-    excelsiorJet {
-        product = 'Pax Britannica'
-        vendor  = 'LibGDX'
-        outputName = 'Pax Britannica'
-        artifactName = 'Pax Britannica'
-
-        mainClass 'de.swagner.paxbritannica.desktop.DesktopLauncher'
-        packageFilesDir(new File(project.rootProject.projectDir, "/android/assets"))
-
-        hideConsole = true
-        globalOptimizer = true
-
-        packaging = 'native-bundle'
-        jvmArgs = ["-Duser.dir=*{exe.dir}", "-Djet.cd.to.user.dir"]
-
-        osxBundle {
-            identifier = 'libgdx.paxbritannica'
-        }
-    }
+//    excelsiorJet {
+//        product = 'Pax Britannica'
+//        vendor  = 'LibGDX'
+//        outputName = 'Pax Britannica'
+//        artifactName = 'Pax Britannica'
+//
+//        mainClass 'de.swagner.paxbritannica.desktop.DesktopLauncher'
+//        packageFilesDir(new File(project.rootProject.projectDir, "/android/assets"))
+//
+//        hideConsole = true
+//        globalOptimizer = true
+//
+//        packaging = 'native-bundle'
+//        jvmArgs = ["-Duser.dir=*{exe.dir}", "-Djet.cd.to.user.dir"]
+//
+//        osxBundle {
+//            identifier = 'libgdx.paxbritannica'
+//        }
+//    }
 }
 
 project(":android") {
@@ -98,8 +90,8 @@ project(":android") {
     configurations { natives }
 
     dependencies {
-        compile project(":core")
-        compile "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
+        implementation project(":core")
+        implementation "com.badlogicgames.gdx:gdx-backend-android:$gdxVersion"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
         natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-armeabi-v7a"
@@ -108,14 +100,16 @@ project(":android") {
 }
 
 project(":html") {
+    apply plugin: "java"
     apply plugin: "gwt"
     apply plugin: "war"
+    apply plugin: "org.gretty"
 
     dependencies {
-        compile project(":core")
-        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
-        compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
+        implementation project(":core")
+        implementation "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx:$gdxVersion:sources"
+        implementation "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
     }
 }
 
@@ -124,11 +118,11 @@ project(":ios") {
     apply plugin: 'robovm'
 
     dependencies {
-        compile "com.mobidevelop.robovm:robovm-rt:${roboVMVersion}"
-        compile "com.mobidevelop.robovm:robovm-cocoatouch:${roboVMVersion}"
-        compile project(":core")
-        compile "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
-        compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
+        implementation "com.mobidevelop.robovm:robovm-rt:${roboVMVersion}"
+        implementation "com.mobidevelop.robovm:robovm-cocoatouch:${roboVMVersion}"
+        implementation project(":core")
+        implementation "com.badlogicgames.gdx:gdx-backend-robovm:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
     }
 }
 

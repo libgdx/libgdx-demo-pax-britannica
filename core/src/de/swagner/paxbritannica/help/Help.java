@@ -277,4 +277,9 @@ public class Help extends DefaultScreen implements InputProcessor {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public boolean touchCancelled(int screenX, int screenY, int pointer, int button) {
+		return false;
+	}
 }

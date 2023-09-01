@@ -1,4 +1,4 @@
-package de.swagner.paxbritannica.android;
+package de.swagner.paxbritannica;
 
 import android.os.Bundle;
 
