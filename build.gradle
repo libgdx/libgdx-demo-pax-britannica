@@ -1,12 +1,12 @@
 buildscript {
     ext {
-        gdxVersion = '1.12.0'
-        roboVMVersion = '2.3.19'
-        roboVMGradleVersion = '2.3.19'
+        gdxVersion = '1.12.1'
+        roboVMVersion = '2.3.20'
+        roboVMGradleVersion = '2.3.20'
         androidToolsVersion = '33.0.2'
-        androidGradleToolsVersion = '8.0.2'
+        androidGradleToolsVersion = '8.1.2'
         gwtVersion = '2.8.2'
-        gwtGradleVersion = '1.1.19'
+        gwtGradleVersion = '1.1.29'
         gwtGrettyVersion = '3.1.0'
     }
 
@@ -19,7 +19,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "org.wisepersist:gwt-gradle-plugin:$gwtGradleVersion"
+        classpath "org.docstr:gwt-gradle-plugin:$gwtGradleVersion"
         classpath "org.gretty:gretty:$gwtGrettyVersion"
         classpath "com.android.tools.build:gradle:$androidGradleToolsVersion"
         classpath "com.mobidevelop.robovm:robovm-gradle-plugin:$roboVMGradleVersion"
@@ -38,7 +38,7 @@ allprojects {
     }
 
     repositories {
-        mavenLocal();
+//        mavenLocal()
         mavenCentral()
         google()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
@@ -54,7 +54,7 @@ project(":core") {
 }
 
 project(":desktop") {
-    apply plugin: "java"
+    apply plugin: "java-library"
 //    apply plugin: 'excelsiorJet'
 
     dependencies {
@@ -62,26 +62,6 @@ project(":desktop") {
         implementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
     }
-
-//    excelsiorJet {
-//        product = 'Pax Britannica'
-//        vendor  = 'LibGDX'
-//        outputName = 'Pax Britannica'
-//        artifactName = 'Pax Britannica'
-//
-//        mainClass 'de.swagner.paxbritannica.desktop.DesktopLauncher'
-//        packageFilesDir(new File(project.rootProject.projectDir, "/android/assets"))
-//
-//        hideConsole = true
-//        globalOptimizer = true
-//
-//        packaging = 'native-bundle'
-//        jvmArgs = ["-Duser.dir=*{exe.dir}", "-Djet.cd.to.user.dir"]
-//
-//        osxBundle {
-//            identifier = 'libgdx.paxbritannica'
-//        }
-//    }
 }
 
 project(":android") {
@@ -100,7 +80,7 @@ project(":android") {
 }
 
 project(":html") {
-    apply plugin: "java"
+    apply plugin: "java-library"
     apply plugin: "gwt"
     apply plugin: "war"
     apply plugin: "org.gretty"
@@ -114,7 +94,7 @@ project(":html") {
 }
 
 project(":ios") {
-    apply plugin: 'java'
+    apply plugin: 'java-library'
     apply plugin: 'robovm'
 
     dependencies {

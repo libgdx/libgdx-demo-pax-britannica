@@ -8,20 +8,15 @@ libgdx-demo-pax britannica
 Pax Britannica is a one-button [RTS game by nofundsgames](http://paxbritannica.henk.ca/), which was ported to libgdx by [Stefan Wagner](http://bompoblog.tumblr.com/).
 
 ### Try it here 
-  * [WebGL/Browser](http://libgdx.badlogicgames.com/demos/paxbritannica)
-  * [Desktop](http://libgdx.badlogicgames.com/demos/paxbritannica/paxbritannica.jar)
-  * Desktop self-contained native bundles created with
-    [Excelsior JET](http://www.excelsiorjet.com) [Gradle Plugin](https://github.com/excelsior-oss/excelsior-jet-gradle-plugin):
-    - [Windows](http://www.excelsior-usa.com/download/jet/gradle/pax-britannica-windows-x86.exe)
-    - [macOS](http://www.excelsior-usa.com/download/jet/gradle/pax-britannica-osx-amd64.pkg)
-    - [Linux](http://www.excelsior-usa.com/download/jet/gradle/pax-britannica-linux-amd64.bin)
-  * [Android](http://libgdx.badlogicgames.com/demos/paxbritannica/paxbritannica.apk)
+  * ~~[WebGL/Browser](http://libgdx.badlogicgames.com/demos/paxbritannica)~~ This could be hosted on GH Pages soon.
+  * ~~[Desktop](http://libgdx.badlogicgames.com/demos/paxbritannica/paxbritannica.jar)~~ Build it yourself... sorry.
+  * Desktop self-contained native bundles created with...
+    * Well, nothing right now. Excelsior JET is no longer available.
+  * ~~[Android](http://libgdx.badlogicgames.com/demos/paxbritannica/paxbritannica.apk)~~ This also needs to be built.
 
 ### Running
-* [Setup your development environment](https://github.com/libgdx/libgdx/wiki)
+* [Setup your development environment](https://libgdx.com/wiki/start/setup)
 * Clone the repository or download and extract the ZIP file
 * Import the project into your preferred development environment, run, debug and package it!
-  * [Eclipse](https://github.com/libgdx/libgdx/wiki/Gradle-and-Eclipse)
-  * [Intellij IDEA](https://github.com/libgdx/libgdx/wiki/Gradle-and-Intellij-IDEA)
-  * [NetBeans](https://github.com/libgdx/libgdx/wiki/Gradle-and-NetBeans)
-  * [Commandline|Gradle on the Commandline](https://github.com/libgdx/libgdx/wiki/Gradle-on-the-Commandline)
+  * Usually deployment is just `gradlew desktop:dist`, `gradlew android:assembleRelease`, or `gradlew html:dist` . 
+  * For other cases, [see the wiki](https://libgdx.com/wiki/deployment/deploying-your-application)!
