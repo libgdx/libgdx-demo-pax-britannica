@@ -315,45 +315,45 @@ public class Settings extends DefaultScreen implements InputProcessor {
 		if (Intersector.intersectRayBoundsFast(collisionRay, collisionDiffEasy)) {
 			Preferences prefs = Gdx.app.getPreferences("paxbritannica");
 			prefs.putInteger("difficulty",0);
-            prefs.flush();
+			prefs.flush();
 			GameInstance.getInstance().difficultyConfig  = prefs.getInteger("difficulty",0);
 		}
 		if (Intersector.intersectRayBoundsFast(collisionRay, collisionDiffMedium)) {
 			Preferences prefs = Gdx.app.getPreferences("paxbritannica");
 			prefs.putInteger("difficulty",1);
-            prefs.flush();
+			prefs.flush();
 			GameInstance.getInstance().difficultyConfig  = prefs.getInteger("difficulty",0);
 		}
 		if (Intersector.intersectRayBoundsFast(collisionRay, collisionDiffHard)) {
 			Preferences prefs = Gdx.app.getPreferences("paxbritannica");
 			prefs.putInteger("difficulty",2);
-            prefs.flush();
+			prefs.flush();
 			GameInstance.getInstance().difficultyConfig  = prefs.getInteger("difficulty",0);
 		}
 		
 		if (Intersector.intersectRayBoundsFast(collisionRay, collisionFacHealthLow)) {
 			Preferences prefs = Gdx.app.getPreferences("paxbritannica");
 			prefs.putInteger("factoryHealth",0);
-            prefs.flush();
+			prefs.flush();
 			GameInstance.getInstance().factoryHealthConfig  = prefs.getInteger("factoryHealth",0);
 		}
 		if (Intersector.intersectRayBoundsFast(collisionRay, collisionFacHealthMedium)) {
 			Preferences prefs = Gdx.app.getPreferences("paxbritannica");
 			prefs.putInteger("factoryHealth",1);
-            prefs.flush();
+			prefs.flush();
 			GameInstance.getInstance().factoryHealthConfig  = prefs.getInteger("factoryHealth",0);
 		}
 		if (Intersector.intersectRayBoundsFast(collisionRay, collisionFacHealthHigh)) {
 			Preferences prefs = Gdx.app.getPreferences("paxbritannica");
 			prefs.putInteger("factoryHealth",2);
-            prefs.flush();
+			prefs.flush();
 			GameInstance.getInstance().factoryHealthConfig  = prefs.getInteger("factoryHealth",0);
 		}	
 		
 		if (Intersector.intersectRayBoundsFast(collisionRay, collisionAntiAliasOff)) {
 			Preferences prefs = Gdx.app.getPreferences("paxbritannica");
 			prefs.putInteger("antiAliasConfig",0);
-            prefs.flush();
+			prefs.flush();
 			GameInstance.getInstance().antiAliasConfig  = prefs.getInteger("antiAliasConfig",1);
 			Resources.getInstance().reInit();
 			show();
@@ -362,7 +362,7 @@ public class Settings extends DefaultScreen implements InputProcessor {
 		if (Intersector.intersectRayBoundsFast(collisionRay, collisionAntiAliasOn)) {
 			Preferences prefs = Gdx.app.getPreferences("paxbritannica");
 			prefs.putInteger("antiAliasConfig",1);
-            prefs.flush();
+			prefs.flush();
 			GameInstance.getInstance().antiAliasConfig  = prefs.getInteger("antiAliasConfig",1);
 			Resources.getInstance().reInit();
 			show();
