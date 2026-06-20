@@ -1,10 +1,20 @@
-sourceSets.main.java.srcDirs = [ "src/" ]
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath "com.mobidevelop.robovm:robovm-gradle-plugin:$robovmVersion"
+  }
+}
+apply plugin: 'robovm'
 
-sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
+java.targetCompatibility = 8
+java.sourceCompatibility = 8
+
 ext {
-    mainClassName = "de.swagner.paxbritannica.IOSLauncher"
+  mainClassName = "de.swagner.paxbritannica.IOSLauncher"
 }
 
 launchIPhoneSimulator.dependsOn build
@@ -12,8 +22,15 @@ launchIPadSimulator.dependsOn build
 launchIOSDevice.dependsOn build
 createIPA.dependsOn build
 
-robovm {
-    archs = "thumbv7:arm64"
+eclipse.project {
+  name = appName + "-ios"
+  natures 'org.robovm.eclipse.RoboVMNature'
 }
 
-eclipse.project.name = appName + "-ios"
+dependencies {
+  implementation "com.badlogicgames.gdx:gdx-backend-robovm-metalangle:$gdxVersion"
+  implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-ios"
+  implementation "com.mobidevelop.robovm:robovm-cocoatouch:$robovmVersion"
+  implementation "com.mobidevelop.robovm:robovm-rt:$robovmVersion"
+  implementation project(':core')
+}

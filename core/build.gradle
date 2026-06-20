@@ -1,13 +1,17 @@
-apply plugin: "java-library"
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+eclipse.project.name = appName + '-core'
 
-sourceCompatibility = 1.8
+java.targetCompatibility = 8
+java.sourceCompatibility = 8
 
 dependencies {
-    api "com.badlogicgames.gdx:gdx:$gdxVersion"
+  api "com.badlogicgames.gdx:gdx:$gdxVersion"
+
+  if(enableGraalNative == 'true') {
+    implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
+  }
 }
 
-sourceSets.main.java.srcDirs = [ "src/" ]
-
-eclipse.project {
-    name = appName + "-core"
+jar {
+  duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }

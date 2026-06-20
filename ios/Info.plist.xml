@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "https://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
     <key>CFBundleDevelopmentRegion</key>
@@ -29,9 +29,7 @@
     <key>UIStatusBarHidden</key>
     <true/>
     <key>MinimumOSVersion</key>
-    <string>9.0</string>
-    <key>UIRequiresFullScreen</key>
-    <true/>
+    <string>12.0</string>
     <key>UIDeviceFamily</key>
     <array>
         <integer>1</integer>
@@ -40,11 +38,20 @@
     <key>UIRequiredDeviceCapabilities</key>
     <array>
         <string>opengles-2</string>
+        <string>arm64</string>
     </array>
     <key>UISupportedInterfaceOrientations</key>
     <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
         <string>UIInterfaceOrientationLandscapeLeft</string>
         <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
+    <key>UILaunchStoryboardName</key>
+    <string>LaunchScreen</string>
+    <key>CFBundleIconName</key>
+    <string>AppIcon</string>
+    <key>UIRequiresFullScreen</key>
+    <true/>
 </dict>
 </plist>
