@@ -28,7 +28,7 @@ public class Targeting {
 		if (shipType == 0)
 			return getNearestOfType(source, GameInstance.getInstance().fighters);
 		else if (shipType == 3)
-			return getFactoryWithHighestHealth(source, GameInstance.getInstance().factorys);
+			return getFactoryWithHighestHealth(source, GameInstance.getInstance().factories);
 		else if (shipType == 1)
 			return getNearestOfType(source, GameInstance.getInstance().bombers);
 		else if (shipType == 2)
@@ -54,7 +54,7 @@ public class Targeting {
 
 		return closestShip;
 	}
-	
+
 	private static Ship getNearestOfType(Ship source, Array<Ship> ships) {
 		// find the closest one!
 		Ship closestShip = null;
@@ -97,7 +97,7 @@ public class Targeting {
 		if (shipType == 0)
 			return getTypeInRange(source, GameInstance.getInstance().fighters, range);
 		else if (shipType == 3)
-			return getTypeInRange(source, GameInstance.getInstance().factorys, range);
+			return getTypeInRange(source, GameInstance.getInstance().factories, range);
 		else if (shipType == 1)
 			return getTypeInRange(source, GameInstance.getInstance().bombers, range);
 		else if (shipType == 2)

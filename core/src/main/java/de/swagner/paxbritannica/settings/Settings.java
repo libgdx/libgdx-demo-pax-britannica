@@ -58,7 +58,7 @@ public class Settings extends DefaultScreen implements InputProcessor {
 	public Settings(Game game) {
 		super(game);
         Gdx.input.setCatchKey(Input.Keys.BACK, true);
-		Gdx.input.setInputProcessor(this);
+        Gdx.input.setInputProcessor(this);
 	}
 
 	@Override

@@ -198,7 +198,7 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			Vector2 temp2 = new Vector2(POSITIONS.get(currentPos).x, POSITIONS.get(currentPos).y);
 			Vector2 facing = new Vector2(-temp1.sub(CENTER).y, temp2.sub(CENTER).x).nor();
 			playerProduction = new PlayerProduction(playerList.get(i), POSITIONS.get(currentPos), facing);
-			GameInstance.getInstance().factorys.add(playerProduction);
+			GameInstance.getInstance().factories.add(playerProduction);
 			++currentPos;
 		}
 
@@ -213,7 +213,7 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			} else {
 				enemyProduction = new HardEnemyProduction(cpuList.get(i), POSITIONS.get(currentPos), facing);
 			}
-			GameInstance.getInstance().factorys.add(enemyProduction);
+			GameInstance.getInstance().factories.add(enemyProduction);
 			++currentPos;
 		}
 
@@ -430,12 +430,12 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 		GameInstance.getInstance().bigBubbleParticles.draw(gameBatch);
 
 		// Factorys
-		for (Ship ship : GameInstance.getInstance().factorys) {
+		for (Ship ship : GameInstance.getInstance().factories) {
 			if (ship.alive) {
 				ship.draw(gameBatch);
 			} else {
-				GameInstance.getInstance().factorys.removeValue(ship, true);
-				if(GameInstance.getInstance().factorys.size < 2) gameOver = true;
+				GameInstance.getInstance().factories.removeValue(ship, true);
+				if(GameInstance.getInstance().factories.size < 2) gameOver = true;
 			}
 		}
 		// Frigate
@@ -574,20 +574,20 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			gameOverTimer=0;
 		}
 
-		if(numPlayers >0 && keycode == Input.Keys.A && GameInstance.getInstance().factorys.size>0) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(0)).button_held = true;
+		if(numPlayers >0 && keycode == Input.Keys.A && GameInstance.getInstance().factories.size>0) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(0)).button_held = true;
 			touchedP1 = true;
 		}
-		if(numPlayers >1 && keycode == Input.Keys.F && GameInstance.getInstance().factorys.size>1) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(1)).button_held = true;
+		if(numPlayers >1 && keycode == Input.Keys.F && GameInstance.getInstance().factories.size>1) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(1)).button_held = true;
 			touchedP2 = true;
 		}
-		if(numPlayers >2 && keycode == Input.Keys.H && GameInstance.getInstance().factorys.size>2) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(2)).button_held = true;
+		if(numPlayers >2 && keycode == Input.Keys.H && GameInstance.getInstance().factories.size>2) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(2)).button_held = true;
 			touchedP3 = true;
 		}
-		if(numPlayers >3 && keycode == Input.Keys.L && GameInstance.getInstance().factorys.size>3) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(3)).button_held = true;
+		if(numPlayers >3 && keycode == Input.Keys.L && GameInstance.getInstance().factories.size>3) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(3)).button_held = true;
 			touchedP4 = true;
 		}
 		return false;
@@ -595,17 +595,17 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 
 	@Override
 	public boolean keyUp(int keycode) {
-		if(numPlayers >0 && keycode == Input.Keys.A && GameInstance.getInstance().factorys.size>0) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(0)).button_held = false;
+		if(numPlayers >0 && keycode == Input.Keys.A && GameInstance.getInstance().factories.size>0) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(0)).button_held = false;
 		}
-		if(numPlayers >1 && keycode == Input.Keys.F &&  GameInstance.getInstance().factorys.size>1) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(1)).button_held = false;
+		if(numPlayers >1 && keycode == Input.Keys.F &&  GameInstance.getInstance().factories.size>1) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(1)).button_held = false;
 		}
-		if(numPlayers >2 && keycode == Input.Keys.H &&  GameInstance.getInstance().factorys.size>1) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(2)).button_held = false;
+		if(numPlayers >2 && keycode == Input.Keys.H &&  GameInstance.getInstance().factories.size>1) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(2)).button_held = false;
 		}
-		if(numPlayers >3 && keycode == Input.Keys.L &&  GameInstance.getInstance().factorys.size>1) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(3)).button_held = false;
+		if(numPlayers >3 && keycode == Input.Keys.L &&  GameInstance.getInstance().factories.size>1) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(3)).button_held = false;
 		}
 		return false;
 	}
@@ -620,23 +620,23 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 	public boolean touchDown(int x, int y, int pointer, int button) {
 		collisionRay = cam.getPickRay(x, y);
 
-		if(numPlayers >0 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP1) && GameInstance.getInstance().factorys.size>0) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(0)).button_held = true;
+		if(numPlayers >0 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP1) && GameInstance.getInstance().factories.size>0) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(0)).button_held = true;
 			pointerP1 = pointer;
 			touchedP1 = true;
 		}
-		if(numPlayers >1 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP2) && GameInstance.getInstance().factorys.size>1) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(1)).button_held = true;
+		if(numPlayers >1 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP2) && GameInstance.getInstance().factories.size>1) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(1)).button_held = true;
 			pointerP2 = pointer;
 			touchedP2 = true;
 		}
-		if(numPlayers >2 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP3) && GameInstance.getInstance().factorys.size>2) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(2)).button_held = true;
+		if(numPlayers >2 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP3) && GameInstance.getInstance().factories.size>2) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(2)).button_held = true;
 			pointerP3 = pointer;
 			touchedP3 = true;
 		}
-		if(numPlayers >3 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP4) && GameInstance.getInstance().factorys.size>3) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(3)).button_held = true;
+		if(numPlayers >3 && Intersector.intersectRayBoundsFast(collisionRay, touchAreaP4) && GameInstance.getInstance().factories.size>3) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(3)).button_held = true;
 			pointerP4 = pointer;
 			touchedP4 = true;
 		}
@@ -647,20 +647,20 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 	public boolean touchUp(int x, int y, int pointer, int button) {
 		collisionRay = cam.getPickRay(x, y);
 
-		if(numPlayers >0 && pointer == pointerP1 && GameInstance.getInstance().factorys.size>0) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(0)).button_held = false;
+		if(numPlayers >0 && pointer == pointerP1 && GameInstance.getInstance().factories.size>0) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(0)).button_held = false;
 			pointerP1 = -1;
 		}
-		if(numPlayers >1 && pointer == pointerP2 &&  GameInstance.getInstance().factorys.size>1) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(1)).button_held = false;
+		if(numPlayers >1 && pointer == pointerP2 &&  GameInstance.getInstance().factories.size>1) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(1)).button_held = false;
 			pointerP2 = -1;
 		}
-		if(numPlayers >2 && pointer == pointerP3 &&  GameInstance.getInstance().factorys.size>1) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(2)).button_held = false;
+		if(numPlayers >2 && pointer == pointerP3 &&  GameInstance.getInstance().factories.size>1) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(2)).button_held = false;
 			pointerP3 = -1;
 		}
-		if(numPlayers >3 && pointer == pointerP4 &&  GameInstance.getInstance().factorys.size>1) {
-			((FactoryProduction) GameInstance.getInstance().factorys.get(3)).button_held = false;
+		if(numPlayers >3 && pointer == pointerP4 &&  GameInstance.getInstance().factories.size>1) {
+			((FactoryProduction) GameInstance.getInstance().factories.get(3)).button_held = false;
 			pointerP4 = -1;
 		}
 		return false;

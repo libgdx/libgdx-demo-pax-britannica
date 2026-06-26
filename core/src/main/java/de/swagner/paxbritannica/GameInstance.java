@@ -21,7 +21,7 @@ public class GameInstance {
 	public boolean debugMode = false;
 
 	public Array<Ship> fighters = new Array<Ship>();
-	public Array<Ship> factorys = new Array<Ship>();
+	public Array<Ship> factories = new Array<Ship>();
 	public Array<Ship> bombers = new Array<Ship>();
 	public Array<Ship> frigates = new Array<Ship>();
 
@@ -47,7 +47,7 @@ public class GameInstance {
 
 	public void resetGame() {
 		fighters.clear();
-		factorys.clear();
+		factories.clear();
 		bombers.clear();
 		frigates.clear();
 		bullets.clear();

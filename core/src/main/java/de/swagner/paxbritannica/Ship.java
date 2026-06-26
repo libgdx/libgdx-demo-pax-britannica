@@ -141,7 +141,7 @@ public class Ship extends Sprite {
 		} else {
 			GameInstance.getInstance().explode(this);
 			alive = false;
-			for (Ship factory : GameInstance.getInstance().factorys) {
+			for (Ship factory : GameInstance.getInstance().factories) {
 				if(factory instanceof FactoryProduction && factory.id == this.id) ((FactoryProduction) factory).ownShips--;
 			}
 		}
