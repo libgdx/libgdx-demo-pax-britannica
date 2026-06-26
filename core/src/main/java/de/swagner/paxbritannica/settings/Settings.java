@@ -70,7 +70,7 @@ public class Settings extends DefaultScreen implements InputProcessor {
 		blackFade = Resources.getInstance().blackFade;
 
 		back = Resources.getInstance().back;
-		back.setPosition(20, 010);
+		back.setPosition(20, 10);
 		back.setColor(1,1,1,0.5f);
 		collisionBack.set(new Vector3(back.getVertices()[0], back.getVertices()[1], -10),new Vector3(back.getVertices()[10], back.getVertices()[11], 10));
 

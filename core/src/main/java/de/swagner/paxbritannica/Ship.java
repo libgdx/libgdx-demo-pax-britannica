@@ -11,9 +11,7 @@ import de.swagner.paxbritannica.factory.FactoryProduction;
 
 public class Ship extends Sprite {
 
-	protected float amount = 1.0f;
-
-	protected float turnSpeed = 1.0f;
+    protected float turnSpeed = 1.0f;
 	protected float accel = 0.0f;
 	protected float hitPoints = 0;
 
@@ -28,7 +26,7 @@ public class Ship extends Sprite {
 	public Vector2 facing = new Vector2();
 
 	public Vector2 collisionCenter = new Vector2();
-	public Array<Vector2> collisionPoints = new Array<Vector2>();
+	public Array<Vector2> collisionPoints = new Array<>();
 
 	public boolean alive = true;
 
@@ -70,7 +68,7 @@ public class Ship extends Sprite {
 		velocity.scl( (float) Math.pow(0.97f, delta * 30.f));
 		position.add(velocity.x * delta, velocity.y * delta);
 
-		this.setRotation(facing.angle());
+		this.setRotation(facing.angleDeg());
 		this.setPosition(position.x, position.y);
 
 		if (!(this instanceof Bullet) && hitPoints <= 0)
@@ -84,7 +82,7 @@ public class Ship extends Sprite {
 	public void turn(float direction) {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime());
 
-		facing.rotate(direction * turnSpeed * delta).nor();
+		facing.rotateDeg(direction * turnSpeed * delta).nor();
 	}
 
 	public void thrust() {

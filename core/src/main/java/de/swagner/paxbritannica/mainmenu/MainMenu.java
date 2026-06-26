@@ -46,9 +46,7 @@ public class MainMenu extends DefaultScreen implements InputProcessor {
 	float time = 0;
 	float fade = 1.0f;
 
-	int idP1 = -1;
-	int idP2 = -1;
-	int cnt = 0;
+    int cnt = 0;
 	int oldCnt = 0;
 	int changeToScreen = -1;
 
@@ -105,7 +103,7 @@ public class MainMenu extends DefaultScreen implements InputProcessor {
 		fadeBatch.getProjectionMatrix().setToOrtho2D(0, 0, 2, 2);
 
 		Preferences prefs = Gdx.app.getPreferences("paxbritannica");
-		if(prefs.getBoolean("music") == true) {
+		if(prefs.getBoolean("music")) {
 			if(Resources.getInstance().music == null) Resources.getInstance().reInit();
 			if(!Resources.getInstance().music.isPlaying()) {
 				Resources.getInstance().music.play();
@@ -253,30 +251,30 @@ public class MainMenu extends DefaultScreen implements InputProcessor {
 			blackFade.draw(fadeBatch);
 			fadeBatch.end();
 			if (fade >= 1 && cnt>=2) {
-				Array<Integer> playerList = new Array<Integer>();
-				if(p1.playerSelect == true) {
+				Array<Integer> playerList = new Array<>();
+				if(p1.playerSelect) {
 					playerList.add(1);
 				}
-				if(p2.playerSelect == true) {
+				if(p2.playerSelect) {
 					playerList.add(2);
 				}
-				if(p3.playerSelect == true) {
+				if(p3.playerSelect) {
 					playerList.add(3);
 				}
-				if(p4.playerSelect == true) {
+				if(p4.playerSelect) {
 					playerList.add(4);
 				}
-				Array<Integer> cpuList = new Array<Integer>();
-				if(p1.cpuSelect == true) {
+				Array<Integer> cpuList = new Array<>();
+				if(p1.cpuSelect) {
 					cpuList.add(1);
 				}
-				if(p2.cpuSelect == true) {
+				if(p2.cpuSelect) {
 					cpuList.add(2);
 				}
-				if(p3.cpuSelect == true) {
+				if(p3.cpuSelect) {
 					cpuList.add(3);
 				}
-				if(p4.cpuSelect == true) {
+				if(p4.cpuSelect) {
 					cpuList.add(4);
 				}
 				game.setScreen(new GameScreen(game, playerList, cpuList));

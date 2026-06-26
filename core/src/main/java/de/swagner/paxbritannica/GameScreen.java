@@ -21,8 +21,7 @@ import de.swagner.paxbritannica.mainmenu.MainMenu;
 
 public class GameScreen extends DefaultScreen implements InputProcessor {
 
-	double startTime = 0;
-	BackgroundFXRenderer backgroundFX = new BackgroundFXRenderer();
+    BackgroundFXRenderer backgroundFX = new BackgroundFXRenderer();
 
 	private float fade = 1.0f;
 	Sprite blackFade;
@@ -41,7 +40,6 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 	FactoryProduction playerProduction;
 	FactoryProduction enemyProduction;
 
-//	ShapeRenderer shapeRenderer = new ShapeRenderer();
 	OrthographicCamera cam;
 
 	private boolean gameOver = false;
@@ -68,7 +66,7 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 
 	Ray collisionRay;
 
-	private Array<Vector2> POSITIONS = new Array<Vector2>();
+	private Array<Vector2> POSITIONS = new Array<>();
 
 	private Vector2 CENTER = new Vector2(300, 180);
 
@@ -103,9 +101,6 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			touchAreaP3 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+(this.height/2), 0));
 			touchAreaP4 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2)+(this.height/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+this.height, 0));
 		}
-
-//		camera = new OrthographicCamera(800, 480);
-//		camera.translate(400, 240, 0);
 
 		if(playerList.size + cpuList.size != 3) {
 			POSITIONS.add(new Vector2(150, 180));
@@ -189,8 +184,6 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 
 
 		// init player positions
-//		Array<Vector2> positons = generatePositions(numPlayers + 1);
-
 		int currentPos = 0;
 
 		for(int i=0;i<playerList.size;++i) {
@@ -217,64 +210,11 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			++currentPos;
 		}
 
-//		// add cpu if only one player plays
-//		if (idP2 == -1) {
-//			temp1 = new Vector2(POSITIONS.get(1).x, POSITIONS.get(1).y);
-//			temp2 = new Vector2(POSITIONS.get(1).x, POSITIONS.get(1).y);
-//			facing = new Vector2(-temp1.sub(CENTER).y, temp2.sub(CENTER).x).nor();
-//			if(GameInstance.getInstance().difficultyConfig == 0) {
-//				enemyProduction = new EasyEnemyProduction((idP1+1)%4, POSITIONS.get(1), facing);
-//			} else if(GameInstance.getInstance().difficultyConfig == 1) {
-//				enemyProduction = new MediumEnemyProduction((idP1+1)%4, POSITIONS.get(1), facing);
-//			} else {
-//				enemyProduction = new HardEnemyProduction((idP1+1)%4, POSITIONS.get(1), facing);
-//			}
-//			GameInstance.getInstance().factorys.add(enemyProduction);
-//			touchedP2 = true;
-//			touchFadeP2 = 0;
-//
-//			temp1 = new Vector2(POSITIONS.get(2).x, POSITIONS.get(2).y);
-//			temp2 = new Vector2(POSITIONS.get(2).x, POSITIONS.get(2).y);
-//			facing = new Vector2(-temp1.sub(CENTER).y, temp2.sub(CENTER).x).nor();
-//			if(GameInstance.getInstance().difficultyConfig == 0) {
-//				enemyProduction = new EasyEnemyProduction((idP1+2)%4, POSITIONS.get(2), facing);
-//			} else if(GameInstance.getInstance().difficultyConfig == 1) {
-//				enemyProduction = new MediumEnemyProduction((idP1+2)%4, POSITIONS.get(2), facing);
-//			} else {
-//				enemyProduction = new HardEnemyProduction((idP1+2)%4, POSITIONS.get(2), facing);
-//			}
-//			GameInstance.getInstance().factorys.add(enemyProduction);
-//			touchedP2 = true;
-//			touchFadeP2 = 0;
-//
-//			temp1 = new Vector2(POSITIONS.get(3).x, POSITIONS.get(3).y);
-//			temp2 = new Vector2(POSITIONS.get(3).x, POSITIONS.get(3).y);
-//			facing = new Vector2(-temp1.sub(CENTER).y, temp2.sub(CENTER).x).nor();
-//			if(GameInstance.getInstance().difficultyConfig == 0) {
-//				enemyProduction = new EasyEnemyProduction((idP1+3)%4, POSITIONS.get(3), facing);
-//			} else if(GameInstance.getInstance().difficultyConfig == 1) {
-//				enemyProduction = new MediumEnemyProduction((idP1+3)%4, POSITIONS.get(3), facing);
-//			} else {
-//				enemyProduction = new HardEnemyProduction((idP1+3)%4, POSITIONS.get(3), facing);
-//			}
-//			GameInstance.getInstance().factorys.add(enemyProduction);
-//			touchedP2 = true;
-//			touchFadeP2 = 0;
-//		} else {
-//			temp1 = new Vector2(POSITIONS.get(1).x, POSITIONS.get(1).y);
-//			temp2 = new Vector2(POSITIONS.get(1).x, POSITIONS.get(1).y);
-//			facing = new Vector2(-temp1.sub(CENTER).y, temp2.sub(CENTER).x).nor();
-//			playerProduction = new PlayerProduction(idP2, POSITIONS.get(1), facing);
-//			GameInstance.getInstance().factorys.add(playerProduction);
-//		}
-
 		Gdx.gl.glDisable(GL20.GL_CULL_FACE);
 		Gdx.gl.glDisable(GL20.GL_DEPTH_TEST);
 	}
 
-	Vector3 tmp = new Vector3();
-
-	@Override
+    @Override
 	public void resize(int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -405,7 +345,7 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 	}
 
 	public Array<Vector2> generatePositions(int n) {
-		Array<Vector2> positions = new Array<Vector2>();
+		Array<Vector2> positions = new Array<>();
 		for (int i = 1; i <= n; ++i) {
 			positions.add(new Vector2(MathUtils.cos(i / n), MathUtils.sin(i / n)).scl(200));
 		}
@@ -429,7 +369,7 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 		GameInstance.getInstance().bubbleParticles.draw(gameBatch);
 		GameInstance.getInstance().bigBubbleParticles.draw(gameBatch);
 
-		// Factorys
+		// Factories
 		for (Ship ship : GameInstance.getInstance().factories) {
 			if (ship.alive) {
 				ship.draw(gameBatch);
@@ -464,11 +404,11 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 		}
 
 		// Laser
-		for (Ship ship : GameInstance.getInstance().bullets) {
-			if (ship.alive) {
-				ship.draw(gameBatch);
+		for (Bullet bullet : GameInstance.getInstance().bullets) {
+			if (bullet.alive) {
+				bullet.draw(gameBatch);
 			} else {
-				GameInstance.getInstance().bullets.removeValue((Bullet) ship, true);
+				GameInstance.getInstance().bullets.removeValue(bullet, true);
 			}
 		}
 
@@ -544,17 +484,6 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			fadeBatch.end();
 			if(fade>=1) game.setScreen(new MainMenu(game));
 		}
-
-//		shapeRenderer.setProjectionMatrix(cam.combined);
-//
-//		 shapeRenderer.begin(ShapeType.Line);
-//		 shapeRenderer.setColor(1, 1, 0, 1);
-//		 shapeRenderer.line(touchAreaP1.min.x, touchAreaP1.min.y, touchAreaP1.max.x, touchAreaP1.max.y);
-//		 shapeRenderer.line(touchAreaP2.min.x, touchAreaP2.min.y, touchAreaP2.max.x, touchAreaP2.max.y);
-//		 shapeRenderer.line(touchAreaP3.min.x, touchAreaP3.min.y, touchAreaP3.max.x, touchAreaP3.max.y);
-//		 shapeRenderer.line(touchAreaP4.min.x, touchAreaP4.min.y, touchAreaP4.max.x, touchAreaP4.max.y);
-//		 shapeRenderer.end();
-
 	}
 
 	@Override

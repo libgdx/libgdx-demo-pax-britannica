@@ -110,7 +110,7 @@ public class Targeting {
 	 * return a random ship of the desired type that's in range
 	 */
 	private static Ship getTypeInRange(Ship source, Array<Ship> ships, float range) {
-		Array<Ship> shipsInRange = new Array<Ship>();
+		Array<Ship> shipsInRange = new Array<>();
 		float range_squared = range * range;
 
 		for (int i = 0; i < ships.size; i++) {

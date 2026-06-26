@@ -20,12 +20,12 @@ public class GameInstance {
 
 	public boolean debugMode = false;
 
-	public Array<Ship> fighters = new Array<Ship>();
-	public Array<Ship> factories = new Array<Ship>();
-	public Array<Ship> bombers = new Array<Ship>();
-	public Array<Ship> frigates = new Array<Ship>();
+	public Array<Ship> fighters = new Array<>();
+	public Array<Ship> factories = new Array<>();
+	public Array<Ship> bombers = new Array<>();
+	public Array<Ship> frigates = new Array<>();
 
-	public Array<Bullet> bullets = new Array<Bullet>();
+	public Array<Bullet> bullets = new Array<>();
 
 	public BubbleParticleEmitter bubbleParticles = new BubbleParticleEmitter();
 	public BigBubbleParticleEmitter bigBubbleParticles = new BigBubbleParticleEmitter();
