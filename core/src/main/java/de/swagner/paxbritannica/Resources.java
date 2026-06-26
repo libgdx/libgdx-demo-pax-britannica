@@ -12,10 +12,8 @@ public class Resources {
 
 	public Sprite title = new Sprite(new Texture(Gdx.files.internal("data/spritepack/title.png")));
 	public Sprite credits = new Sprite(new Texture(Gdx.files.internal("data/spritepack/credits.png")));
-	
-	public TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("data/spritepack/packhigh.pack"));
-	// public AtlasRegion region = atlas.findRegion("imagename");
-	// Sprite sprite = atlas.createSprite("otherimagename");
+
+	public TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("data/spritepack/packhigh.atlas"));
 
 	public Music music = Gdx.audio.newMusic(Gdx.files.internal("data/audio/music.mp3"));
 
@@ -23,7 +21,7 @@ public class Resources {
 	public Sprite factoryP2 = atlas.createSprite("factoryp2");
 	public Sprite factoryP3 = atlas.createSprite("factoryp3");
 	public Sprite factoryP4 = atlas.createSprite("factoryp4");
-	
+
 	public Sprite factoryP1Small = atlas.createSprite("factoryp1");
 	public Sprite factoryP2Small = atlas.createSprite("factoryp2");
 	public Sprite factoryP3Small = atlas.createSprite("factoryp3");
@@ -88,7 +86,7 @@ public class Resources {
 	public Sprite aButton = atlas.createSprite("abutton");
 	public Sprite aCpuButton = atlas.createSprite("acpubutton");
 	public Sprite aPlayerButton = atlas.createSprite("aplayerbutton");
-	
+
 	public Sprite cpuButton = atlas.createSprite("cpubutton");
 	public Sprite playerButton = atlas.createSprite("playerbutton");
 
@@ -114,7 +112,7 @@ public class Resources {
 	public Sprite touchArea2 = atlas.createSprite("touchArea");
 	public Sprite touchArea3 = atlas.createSprite("touchArea");
 	public Sprite touchArea4 = atlas.createSprite("touchArea");
-	
+
 	public Sprite help = atlas.createSprite("help");
 	public Sprite musicOnOff = atlas.createSprite("music");
 	public Sprite back = atlas.createSprite("back");
@@ -137,19 +135,19 @@ public class Resources {
 
 	public void reInit() {
 		dispose();
-		
+
 		Preferences prefs = Gdx.app.getPreferences("paxbritannica");
 		if (prefs.getInteger("antiAliasConfig", 1) == 0) {
-			atlas = new TextureAtlas(Gdx.files.internal("data/spritepack/pack.pack"));
+			atlas = new TextureAtlas(Gdx.files.internal("data/spritepack/pack.atlas"));
 		} else {
-			atlas = new TextureAtlas(Gdx.files.internal("data/spritepack/packhigh.pack"));
+			atlas = new TextureAtlas(Gdx.files.internal("data/spritepack/packhigh.atlas"));
 		}
 
 		try {
 			if (music != null) {
 				music.stop();
 				music.dispose();
-			} 
+			}
 			music = Gdx.audio.newMusic(Gdx.files.internal("data/audio/music.mp3"));
 		} catch (Exception e) {
 			music = Gdx.audio.newMusic(Gdx.files.internal("data/audio/music.mp3"));
@@ -159,7 +157,7 @@ public class Resources {
 		factoryP2 = atlas.createSprite("factoryp2");
 		factoryP3 = atlas.createSprite("factoryp3");
 		factoryP4 = atlas.createSprite("factoryp4");
-		
+
 		factoryP1Small = atlas.createSprite("factoryp1");
 		factoryP2Small = atlas.createSprite("factoryp2");
 		factoryP3Small = atlas.createSprite("factoryp3");
@@ -228,7 +226,7 @@ public class Resources {
 		aButton = atlas.createSprite("abutton");
 		aCpuButton = atlas.createSprite("acpubutton");
 		aPlayerButton = atlas.createSprite("aplayerbutton");
-		
+
 		cpuButton = atlas.createSprite("cpubutton");
 		playerButton = atlas.createSprite("playerbutton");
 
@@ -254,7 +252,7 @@ public class Resources {
 		touchArea2 = atlas.createSprite("touchArea");
 		touchArea3 = atlas.createSprite("touchArea");
 		touchArea4 = atlas.createSprite("touchArea");
-		
+
 		help = atlas.createSprite("help");
 		musicOnOff = atlas.createSprite("music");
 		back = atlas.createSprite("back");
