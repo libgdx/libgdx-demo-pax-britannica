@@ -10,115 +10,115 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 
 public class Resources {
 
-	public Sprite title = new Sprite(new Texture(Gdx.files.internal("data/spritepack/title.png")));
-	public Sprite credits = new Sprite(new Texture(Gdx.files.internal("data/spritepack/credits.png")));
+	public Sprite title;
+	public Sprite credits;
 
-	public TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("data/spritepack/packhigh.atlas"));
+	public TextureAtlas atlas;
 
-	public Music music = Gdx.audio.newMusic(Gdx.files.internal("data/audio/music.mp3"));
+	public Music music;
 
-	public Sprite factoryP1 = atlas.createSprite("factoryp1");
-	public Sprite factoryP2 = atlas.createSprite("factoryp2");
-	public Sprite factoryP3 = atlas.createSprite("factoryp3");
-	public Sprite factoryP4 = atlas.createSprite("factoryp4");
+	public Sprite factoryP1;
+	public Sprite factoryP2;
+	public Sprite factoryP3;
+	public Sprite factoryP4;
 
-	public Sprite factoryP1Small = atlas.createSprite("factoryp1");
-	public Sprite factoryP2Small = atlas.createSprite("factoryp2");
-	public Sprite factoryP3Small = atlas.createSprite("factoryp3");
-	public Sprite factoryP4Small = atlas.createSprite("factoryp4");
+	public Sprite factoryP1Small;
+	public Sprite factoryP2Small;
+	public Sprite factoryP3Small;
+	public Sprite factoryP4Small;
 
-	public Sprite fighterP1 = atlas.createSprite("fighterp1");
-	public Sprite fighterP2 = atlas.createSprite("fighterp2");
-	public Sprite fighterP3 = atlas.createSprite("fighterp3");
-	public Sprite fighterP4 = atlas.createSprite("fighterp4");
+	public Sprite fighterP1;
+	public Sprite fighterP2;
+	public Sprite fighterP3;
+	public Sprite fighterP4;
 
-	public Sprite bomberP1 = atlas.createSprite("bomberp1");
-	public Sprite bomberP2 = atlas.createSprite("bomberp2");
-	public Sprite bomberP3 = atlas.createSprite("bomberp3");
-	public Sprite bomberP4 = atlas.createSprite("bomberp4");
+	public Sprite bomberP1;
+	public Sprite bomberP2;
+	public Sprite bomberP3;
+	public Sprite bomberP4;
 
-	public Sprite frigateP1 = atlas.createSprite("frigatep1");
-	public Sprite frigateP2 = atlas.createSprite("frigatep2");
-	public Sprite frigateP3 = atlas.createSprite("frigatep3");
-	public Sprite frigateP4 = atlas.createSprite("frigatep4");
+	public Sprite frigateP1;
+	public Sprite frigateP2;
+	public Sprite frigateP3;
+	public Sprite frigateP4;
 
-	public Sprite debrisSmall = atlas.createSprite("debrissmall");
-	public Sprite debrisMed = atlas.createSprite("debrismed");
-	public Sprite debrisLarge = atlas.createSprite("debrislarge");
+	public Sprite debrisSmall;
+	public Sprite debrisMed;
+	public Sprite debrisLarge;
 
-	public Sprite fish1 = atlas.createSprite("fish1");
-	public Sprite fish2 = atlas.createSprite("fish2");
-	public Sprite fish3 = atlas.createSprite("fish3");
-	public Sprite fish4 = atlas.createSprite("fish4");
-	public Sprite fish5 = atlas.createSprite("fish5");
-	public Sprite fish6 = atlas.createSprite("fish6");
-	public Sprite fish7 = atlas.createSprite("fish7");
-	public Sprite fish8 = atlas.createSprite("fish8");
+	public Sprite fish1;
+	public Sprite fish2;
+	public Sprite fish3;
+	public Sprite fish4;
+	public Sprite fish5;
+	public Sprite fish6;
+	public Sprite fish7;
+	public Sprite fish8;
 
-	public Sprite needle = atlas.createSprite("needle");
+	public Sprite needle;
 
-	public Sprite background = atlas.createSprite("background");
+	public Sprite background;
 
-	public Sprite blackFade = atlas.createSprite("blackfade");
+	public Sprite blackFade;
 
-	public Sprite laser = atlas.createSprite("laser");
-	public Sprite missile = atlas.createSprite("missile");
-	public Sprite bomb = atlas.createSprite("bomb");
+	public Sprite laser;
+	public Sprite missile;
+	public Sprite bomb;
 
-	public Sprite production1 = atlas.createSprite("production1");
-	public Sprite production2 = atlas.createSprite("production2");
-	public Sprite production3 = atlas.createSprite("production3");
+	public Sprite production1;
+	public Sprite production2;
+	public Sprite production3;
 
-	public Sprite production_tile1 = atlas.createSprite("productiontile");
-	public Sprite production_tile2 = atlas.createSprite("productiontile");
-	public Sprite production_tile3 = atlas.createSprite("productiontile");
-	public Sprite production_tile4 = atlas.createSprite("productiontile");
+	public Sprite production_tile1;
+	public Sprite production_tile2;
+	public Sprite production_tile3;
+	public Sprite production_tile4;
 
-	public Sprite upgradeOutline = atlas.createSprite("upgradeoutline");
-	public Sprite frigateOutline = atlas.createSprite("frigateoutline");
-	public Sprite bomberOutline = atlas.createSprite("bomberoutline");
-	public Sprite fighterOutline = atlas.createSprite("fighteroutline");
+	public Sprite upgradeOutline;
+	public Sprite frigateOutline;
+	public Sprite bomberOutline;
+	public Sprite fighterOutline;
 
-	public Sprite healthNone = atlas.createSprite("healthnone");
-	public Sprite healthSome = atlas.createSprite("healthsome");
-	public Sprite healthFull = atlas.createSprite("healthfull");
+	public Sprite healthNone;
+	public Sprite healthSome;
+	public Sprite healthFull;
 
-	public Sprite aButton = atlas.createSprite("abutton");
-	public Sprite aCpuButton = atlas.createSprite("acpubutton");
-	public Sprite aPlayerButton = atlas.createSprite("aplayerbutton");
+	public Sprite aButton;
+	public Sprite aCpuButton;
+	public Sprite aPlayerButton;
 
-	public Sprite cpuButton = atlas.createSprite("cpubutton");
-	public Sprite playerButton = atlas.createSprite("playerbutton");
+	public Sprite cpuButton;
+	public Sprite playerButton;
 
-	public Sprite cnt1 = atlas.createSprite("1");
-	public Sprite cnt2 = atlas.createSprite("2");
-	public Sprite cnt3 = atlas.createSprite("3");
-	public Sprite cnt4 = atlas.createSprite("4");
-	public Sprite cnt5 = atlas.createSprite("5");
+	public Sprite cnt1;
+	public Sprite cnt2;
+	public Sprite cnt3;
+	public Sprite cnt4;
+	public Sprite cnt5;
 
-	public Sprite spark = atlas.createSprite("spark");
-	public Sprite bubble = atlas.createSprite("bubble");
-	public Sprite bigbubble = atlas.createSprite("bigbubble");
-	public Sprite explosion = atlas.createSprite("explosion");
+	public Sprite spark;
+	public Sprite bubble;
+	public Sprite bigbubble;
+	public Sprite explosion;
 
-	public Sprite factoryHeavyDamage1 = atlas.createSprite("factoryheavydamage1");
-	public Sprite factoryHeavyDamage2 = atlas.createSprite("factoryheavydamage2");
-	public Sprite factoryHeavyDamage3 = atlas.createSprite("factoryheavydamage3");
-	public Sprite factoryLightDamage1 = atlas.createSprite("factorylightdamage1");
-	public Sprite factoryLightDamage2 = atlas.createSprite("factorylightdamage2");
-	public Sprite factoryLightDamage3 = atlas.createSprite("factorylightdamage3");
+	public Sprite factoryHeavyDamage1;
+	public Sprite factoryHeavyDamage2;
+	public Sprite factoryHeavyDamage3;
+	public Sprite factoryLightDamage1;
+	public Sprite factoryLightDamage2;
+	public Sprite factoryLightDamage3;
 
-	public Sprite touchArea1 = atlas.createSprite("touchArea");
-	public Sprite touchArea2 = atlas.createSprite("touchArea");
-	public Sprite touchArea3 = atlas.createSprite("touchArea");
-	public Sprite touchArea4 = atlas.createSprite("touchArea");
+	public Sprite touchArea1;
+	public Sprite touchArea2;
+	public Sprite touchArea3;
+	public Sprite touchArea4;
 
-	public Sprite help = atlas.createSprite("help");
-	public Sprite musicOnOff = atlas.createSprite("music");
-	public Sprite back = atlas.createSprite("back");
-	public Sprite settings = atlas.createSprite("settings");
-	public Sprite checkboxOn = atlas.createSprite("checkboxon");
-	public Sprite checkboxOff = atlas.createSprite("checkboxoff");
+	public Sprite help;
+	public Sprite musicOnOff;
+	public Sprite back;
+	public Sprite settings;
+	public Sprite checkboxOn;
+	public Sprite checkboxOff;
 
 	public static Resources instance;
 
@@ -267,7 +267,8 @@ public class Resources {
 	}
 
 	public void dispose() {
-		atlas.dispose();
+        if(atlas != null)
+            atlas.dispose();
 	}
 
 }
