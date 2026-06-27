@@ -35,12 +35,8 @@ public class FactorySelector extends Sprite {
 
 	float delta;
 
-	private Vector2 position = new Vector2();
-
-	public FactorySelector(Vector2 position, int id) {
+    public FactorySelector(Vector2 position, int id) {
 		super();
-		this.position = position;
-		this.setPosition(position.x, position.y);
 
 		switch (id) {
 		case 1:
@@ -154,27 +150,25 @@ public class FactorySelector extends Sprite {
 		    playerButton.draw(batch);
 
 		} else if(playerSelect || cpuSelect) {
-		    fade = Math.min(fade +delta, 1);
-		    this.setColor(fade, fade, fade, 1);
+            fade = Math.min(fade + delta, 1);
+            this.setColor(fade, fade, fade, 1);
 
-			fadeButton = Math.max(fadeButton -delta, 0);
-			if(cpuSelect) {
-				cpuButton.setColor(0, 0, 0, fadeButton);
-			    cpuButton.draw(batch);
-			} else {
-				cpuButton.setColor(fadeButton, fadeButton, fadeButton, fadeButton);
-			    cpuButton.draw(batch);
-			}
+            fadeButton = Math.max(fadeButton - delta, 0);
+            if (cpuSelect) {
+                cpuButton.setColor(0, 0, 0, fadeButton);
+                cpuButton.draw(batch);
+            } else {
+                cpuButton.setColor(fadeButton, fadeButton, fadeButton, fadeButton);
+                cpuButton.draw(batch);
+            }
 
-			if(playerSelect) {
-				playerButton.setColor(0, 0, 0, fadeButton);
-			    playerButton.draw(batch);
-			} else {
-				playerButton.setColor(fadeButton, fadeButton, fadeButton, fadeButton);
-			    playerButton.draw(batch);
-			}
-		}
-
-
+            if (playerSelect) {
+                playerButton.setColor(0, 0, 0, fadeButton);
+                playerButton.draw(batch);
+            } else {
+                playerButton.setColor(fadeButton, fadeButton, fadeButton, fadeButton);
+                playerButton.draw(batch);
+            }
+        }
 	}
 }

@@ -18,8 +18,6 @@ import de.swagner.paxbritannica.particlesystem.SparkParticleEmitter;
 
 public class GameInstance {
 
-	public boolean debugMode = false;
-
 	public Array<Ship> fighters = new Array<>();
 	public Array<Ship> factories = new Array<>();
 	public Array<Ship> bombers = new Array<>();

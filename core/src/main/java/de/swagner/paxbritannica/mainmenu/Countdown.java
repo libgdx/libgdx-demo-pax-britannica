@@ -16,17 +16,17 @@ public class Countdown extends Sprite {
 	private float fade = 0.0f;
 
 	private int cnt = 5;
-	
+
 	float delta;
 
-	private Vector2 position = new Vector2();
+	private Vector2 position;
 
 	public Countdown(Vector2 position) {
 		this.position = position;
 
 		changeTexture(5);
 	}
-	
+
 	public void reset() {
 		changeTexture(5);
 		finished = false;
@@ -67,7 +67,7 @@ public class Countdown extends Sprite {
 	@Override
 	public void draw(Batch batch) {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime());
-		
+
 		super.draw(batch);
 
 		if (cnt < 1) {

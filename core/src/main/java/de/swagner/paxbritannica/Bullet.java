@@ -5,8 +5,8 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Bullet extends Ship {
 
-	private float buffer = 500;
-	public float damage=0;
+	private static final float BUFFER = 500;
+	public float damage = 0;
 	public float bulletSpeed = 0f;
 
 	public Bullet(int id, Vector2 position, Vector2 facing) {
@@ -15,15 +15,15 @@ public class Bullet extends Ship {
 
 	@Override
 	public void draw(Batch batch) {
-		if(alive == false) return;
-		if( !Targeting.onScreen(collisionCenter,buffer)) {
+		if(!alive) return;
+		if( !Targeting.onScreen(collisionCenter, BUFFER)) {
 			alive = false;
 		} else if(velocity.len()<=5) {
 			alive = false;
 			GameInstance.getInstance().explosionParticles.addTinyExplosion(collisionCenter);
-		} else {		
+		} else {
 			super.draw(batch);
 		}
-		
+
 	}
 }

@@ -4,15 +4,13 @@ import com.badlogic.gdx.math.Intersector;
 
 public class Collision {
 
-	private static Bullet bullet;
-	private static Ship ship;
-
-	public static void collisionCheck() {
+    public static void collisionCheck() {
 
 		for (int i=0; i< GameInstance.getInstance().bullets.size;i++) {
-			bullet = GameInstance.getInstance().bullets.get(i);
+            Bullet bullet = GameInstance.getInstance().bullets.get(i);
 			if (bullet.alive) {
-				for (int n=0; n< GameInstance.getInstance().fighters.size;n++) {
+                Ship ship;
+                for (int n = 0; n< GameInstance.getInstance().fighters.size; n++) {
 					ship =  GameInstance.getInstance().fighters.get(n);
 					collisionCheck(bullet, ship);
 				}

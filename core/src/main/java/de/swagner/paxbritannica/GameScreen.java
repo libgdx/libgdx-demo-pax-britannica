@@ -66,11 +66,7 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 
 	Ray collisionRay;
 
-	private Array<Vector2> POSITIONS = new Array<>();
-
-	private Vector2 CENTER = new Vector2(300, 180);
-
-	private int width = 800;
+    private int width = 800;
 	private int height = 480;
 
 	public GameScreen(Game game, Array<Integer> playerList, Array<Integer> cpuList) {
@@ -102,7 +98,8 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 			touchAreaP4 = new BoundingBox(new Vector3(-((this.width-800)/2)+(this.width/2), -((this.height-480)/2)+(this.height/2), 0),new Vector3(-((this.width-800)/2)+this.width, -((this.height-480)/2)+this.height, 0));
 		}
 
-		if(playerList.size + cpuList.size != 3) {
+        Array<Vector2> POSITIONS = new Array<>();
+        if(playerList.size + cpuList.size != 3) {
 			POSITIONS.add(new Vector2(150, 180));
 			POSITIONS.add(new Vector2(450, 180));
 			POSITIONS.add(new Vector2(300, 335));
@@ -186,7 +183,8 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 		// init player positions
 		int currentPos = 0;
 
-		for(int i=0;i<playerList.size;++i) {
+        Vector2 CENTER = new Vector2(300, 180);
+        for(int i = 0; i<playerList.size; ++i) {
 			Vector2 temp1 = new Vector2(POSITIONS.get(currentPos).x, POSITIONS.get(currentPos).y);
 			Vector2 temp2 = new Vector2(POSITIONS.get(currentPos).x, POSITIONS.get(currentPos).y);
 			Vector2 facing = new Vector2(-temp1.sub(CENTER).y, temp2.sub(CENTER).x).nor();

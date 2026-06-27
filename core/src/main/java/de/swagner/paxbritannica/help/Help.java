@@ -26,9 +26,8 @@ public class Help extends DefaultScreen implements InputProcessor {
 	Sprite back;
 
 	BoundingBox collisionBack = new BoundingBox();
-	BoundingBox collisionMusic = new BoundingBox();
 
-	Sprite fighter;
+    Sprite fighter;
 	Sprite bomber;
 	Sprite frigate;
 	Sprite upgrade;
