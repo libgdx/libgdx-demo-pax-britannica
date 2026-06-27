@@ -131,7 +131,7 @@ public class Help extends DefaultScreen implements InputProcessor {
 		if (!finished && fade > 0) {
 			fade = Math.max(fade - Gdx.graphics.getDeltaTime() / 2.f, 0);
 			fadeBatch.begin();
-			blackFade.setColor(blackFade.getColor().r, blackFade.getColor().g, blackFade.getColor().b, fade);
+			blackFade.setAlpha(fade);
 			blackFade.draw(fadeBatch);
 			fadeBatch.end();
 		}
@@ -139,7 +139,7 @@ public class Help extends DefaultScreen implements InputProcessor {
 		if (finished) {
 			fade = Math.min(fade + Gdx.graphics.getDeltaTime() / 2.f, 1);
 			fadeBatch.begin();
-			blackFade.setColor(blackFade.getColor().r, blackFade.getColor().g, blackFade.getColor().b, fade);
+			blackFade.setAlpha(fade);
 			blackFade.draw(fadeBatch);
 			fadeBatch.end();
 			if (fade >= 1) {

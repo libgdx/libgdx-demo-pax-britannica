@@ -239,7 +239,7 @@ public class MainMenu extends DefaultScreen implements InputProcessor {
 		if (!countdown.finished && fade > 0) {
 			fade = Math.max(fade - delta / 2.f, 0);
 			fadeBatch.begin();
-			blackFade.setColor(blackFade.getColor().r, blackFade.getColor().g, blackFade.getColor().b, fade);
+			blackFade.setAlpha(fade);
 			blackFade.draw(fadeBatch);
 			fadeBatch.end();
 		}
@@ -247,7 +247,7 @@ public class MainMenu extends DefaultScreen implements InputProcessor {
 		if (countdown.finished) {
 			fade = Math.min(fade + delta / 2.f, 1);
 			fadeBatch.begin();
-			blackFade.setColor(blackFade.getColor().r, blackFade.getColor().g, blackFade.getColor().b, fade);
+			blackFade.setAlpha(fade);
 			blackFade.draw(fadeBatch);
 			fadeBatch.end();
 			if (fade >= 1 && cnt>=2) {
@@ -393,13 +393,11 @@ public class MainMenu extends DefaultScreen implements InputProcessor {
 
 	@Override
 	public boolean keyUp(int keycode) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public boolean keyTyped(char character) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

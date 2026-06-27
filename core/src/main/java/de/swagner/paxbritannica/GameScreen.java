@@ -466,7 +466,7 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 		if (!gameOver && fade > 0 && fade < 100) {
 			fade = Math.max(fade - delta / 2.f, 0);
 			fadeBatch.begin();
-			blackFade.setColor(blackFade.getColor().r, blackFade.getColor().g, blackFade.getColor().b, fade);
+			blackFade.setAlpha(fade);
 			blackFade.draw(fadeBatch);
 			fadeBatch.end();
 		}
@@ -477,7 +477,7 @@ public class GameScreen extends DefaultScreen implements InputProcessor {
 		if (gameOver && gameOverTimer <= 0) {
 			fade = Math.min(fade + delta / 2.f, 1);
 			fadeBatch.begin();
-			blackFade.setColor(blackFade.getColor().r, blackFade.getColor().g, blackFade.getColor().b, fade);
+			blackFade.setAlpha(fade);
 			blackFade.draw(fadeBatch);
 			fadeBatch.end();
 			if(fade>=1) game.setScreen(new MainMenu(game));
