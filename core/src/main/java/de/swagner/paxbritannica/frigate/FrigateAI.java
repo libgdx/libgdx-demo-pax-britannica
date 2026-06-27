@@ -7,12 +7,12 @@ import de.swagner.paxbritannica.Ship;
 import de.swagner.paxbritannica.Targeting;
 
 public class FrigateAI {
-	private Vector2 target_fuzzy_pos = new Vector2();
+	private final Vector2 target_fuzzy_pos = new Vector2();
 	private boolean stopping = false;
-	
+
 	public Ship target;
 
-	private Frigate frigate;
+	private final Frigate frigate;
 
 	public FrigateAI(Frigate frigate) {
 		this.frigate = frigate;
@@ -28,12 +28,12 @@ public class FrigateAI {
 		}
 		if (target == null) {
 			target = Targeting.getNearestOfType(frigate, 3);
-		}	
-		
+		}
+
 		if (target != null) {
-			Vector2 random = new Vector2(MathUtils.cos((float) ((MathUtils.random() * MathUtils.PI * 2) * Math.sqrt(MathUtils.random()))),
-										MathUtils.sin((float) ((MathUtils.random() * MathUtils.PI * 2) * Math.sqrt(MathUtils.random()))));
-			target_fuzzy_pos.set(target.collisionCenter).add(random.scl(250));
+			target_fuzzy_pos.set(target.collisionCenter).add(
+                250f * MathUtils.cos(((MathUtils.random() * MathUtils.PI2) * (float) Math.sqrt(MathUtils.random()))),
+                250f * MathUtils.sin(((MathUtils.random() * MathUtils.PI2) * (float) Math.sqrt(MathUtils.random()))));
 		}
 	}
 
@@ -60,12 +60,12 @@ public class FrigateAI {
 		        frigate.goTowards(target_fuzzy_pos, true);
 		      }
 		    }
-		    
+
 		    // Shoot when not moving and able to fire
 		    if(!frigate.isEmpty() && speed_square < 0.1) {
 		        frigate.shoot();
 		    }
-			
+
 		}
 	}
 }

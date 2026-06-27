@@ -7,12 +7,12 @@ import de.swagner.paxbritannica.Ship;
 import de.swagner.paxbritannica.Targeting;
 
 public class MissileAI {
-	private float MAX_LIFETIME = 5; // 5 seconds to auto-destruct
+	private static final float MAX_LIFETIME = 5; // 5 seconds to auto-destruct
 
 	private Ship target;
 
-	private Missile missile;
-	
+	private final Missile missile;
+
 	Vector2 relativeVel = new Vector2();
 	Vector2 toTarget = new Vector2();
 

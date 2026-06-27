@@ -10,14 +10,14 @@ import de.swagner.paxbritannica.Ship;
 
 public class Frigate extends Ship {
 
-	private float shotCooldownTime = 5f;
-	private float shotCapacity = 8f;
-	private float shotReloadRate = 1f;
+	private static final float shotCooldownTime = 5f;
+	private static final float shotCapacity = 8f;
+	private static final float shotReloadRate = 1f;
 
 	private float shots = 0;
 	private float cooldown = 0;
 	float delta;
-	
+
 	public FrigateAI ai = new FrigateAI(this);
 
 	public Frigate(int id, Vector2 position, Vector2 facing) {
@@ -26,7 +26,7 @@ public class Frigate extends Ship {
 		turnSpeed = 20f;
 		accel = 14.0f;
 		hitPoints = 2000;
-		
+
 		switch (id) {
 		case 1:
 			this.set(Resources.getInstance().frigateP1);
@@ -47,9 +47,9 @@ public class Frigate extends Ship {
 	@Override
 	public void draw(Batch batch) {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime());
-		
+
 		ai.update();
-		
+
 		cooldown = Math.max(0, cooldown - delta*50f);
 		shots = Math.min(shots + (shotReloadRate * delta), shotCapacity);
 
