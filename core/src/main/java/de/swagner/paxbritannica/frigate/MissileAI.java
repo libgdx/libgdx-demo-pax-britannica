@@ -1,5 +1,6 @@
 package de.swagner.paxbritannica.frigate;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 
 import de.swagner.paxbritannica.GameInstance;
@@ -50,8 +51,9 @@ public class MissileAI {
 	public Vector2 predict() {
 		relativeVel.set(missile.velocity).sub(target.velocity);
 		toTarget.set(target.collisionCenter).sub(missile.collisionCenter);
-		if (missile.velocity.dot(toTarget) != 0) {
-			float time_to_target = toTarget.dot(toTarget) / relativeVel.dot(toTarget);
+        float relativeToTarget = relativeVel.dot(toTarget);
+		if (!MathUtils.isZero(relativeToTarget)) {
+			float time_to_target = toTarget.dot(toTarget) / relativeToTarget;
 			return new Vector2(target.collisionCenter).sub(relativeVel.scl(Math.max(0, time_to_target)));
 		} else {
 			return target.collisionCenter;
