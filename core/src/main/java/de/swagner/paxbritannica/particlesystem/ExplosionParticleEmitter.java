@@ -91,8 +91,7 @@ public class ExplosionParticleEmitter extends ParticleEmitter {
 	public void addTinyExplosion(Vector2 position) {
         delta_scale = 1;
         addParticle(position, 0.1f);
-        Vector2 random = new Vector2(MathUtils.cos((MathUtils.random() * MathUtils.PI2) * (float) Math.sqrt(MathUtils.random())),
-            (MathUtils.sin(MathUtils.random() * MathUtils.PI2) * (float) Math.sqrt(MathUtils.random())));
+        Vector2 random = new Vector2().setToRandomDirection().scl((float) Math.sqrt(MathUtils.random()));
         Vector2 vel = new Vector2(random).add(random);
         Vector2 velp = new Vector2(vel).scl(1f / 20f * 2f);
         Vector2 offset = new Vector2(random).scl(10);

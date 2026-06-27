@@ -31,9 +31,7 @@ public class FrigateAI {
 		}
 
 		if (target != null) {
-			target_fuzzy_pos.set(target.collisionCenter).add(
-                250f * MathUtils.cos(((MathUtils.random() * MathUtils.PI2) * (float) Math.sqrt(MathUtils.random()))),
-                250f * MathUtils.sin(((MathUtils.random() * MathUtils.PI2) * (float) Math.sqrt(MathUtils.random()))));
+			target_fuzzy_pos.setToRandomDirection().scl((float) Math.sqrt(MathUtils.random()) * 250f).add(target.collisionCenter);
 		}
 	}
 
