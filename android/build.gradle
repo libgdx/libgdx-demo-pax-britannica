@@ -10,7 +10,7 @@ apply plugin: 'com.android.application'
 
 android {
   namespace = "de.swagner.paxbritannica"
-  compileSdk = 35
+  compileSdk 36
   sourceSets {
     main {
       manifest.srcFile 'AndroidManifest.xml'
