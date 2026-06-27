@@ -210,38 +210,7 @@ public class Production {
 		update();
 
 		facing90.set(factory.facing);
-		facing90.rotate(90).nor();
-//		factory.facing.nor();
-
-//		//Renders behind sprites... :(
-//		float SEGMENTS = 32;
-//		float RADIUS = 32;
-//		renderer.begin(GL10.GL_TRIANGLE_FAN);
-//		Gdx.graphics.getGL11().glPushMatrix();
-//		camera.position.set(350, +240, 0);
-//		camera.update();
-//		camera.apply(Gdx.graphics.getGL10());
-//		Gdx.graphics.getGL11().glTranslatef(factory.collisionCenter.x,
-//				factory.collisionCenter.y, 0);
-//		Gdx.graphics.getGL11().glRotatef(factory.facing.angle() - 90, 0, 0, 1);
-//		float angle = factory.production
-//				.scale_angle(factory.resourceAmount) * MathUtils.PI2;
-//		float filled_angle = MathUtils.PI2 - angle;
-//		renderer.color(0, 0, 0, 1.6f);
-//		renderer.vertex(0, 0, -10);
-//		for (int point = 0; point < SEGMENTS; point++) {
-//			Vector2 vert = new Vector2(MathUtils.cos(MathUtils.PI / 2.f - angle - point / SEGMENTS * filled_angle) * RADIUS, MathUtils.sin(MathUtils.PI / 2.f
-//					- angle - point / SEGMENTS * filled_angle)
-//					* RADIUS);
-//			renderer.vertex(vert.x, vert.y, -10);
-//		}
-//		renderer.vertex(0, 0, 10);
-//		renderer.end();
-//
-//		Gdx.graphics.getGL11().glPopMatrix();
-//		camera.position.set(400, 240, 0);
-//		camera.update();
-//		camera.apply(Gdx.graphics.getGL10());
+		facing90.rotate90(1).nor();
 
 		float angle = Math.min(1, Math.max(0, norm(scale_angle(factory.resourceAmount),0,0.25f)));
 		fade = Math.min(MathUtils.PI, fade+(Gdx.graphics.getDeltaTime()));
@@ -250,48 +219,32 @@ public class Production {
 
 		production_tile1.setOrigin(0, 0);
 
-//		if(factory.ownShips>MAXSHIPS-1) {
-//			production_tile1.setColor(1.0f, 0.1f,0.1f, MathUtils.sin(fade));
-//		} else {
-			production_tile1.setColor(angle, angle,angle, angle);
-//		}
-		production_tile1.setRotation(factory.facing.angle());
+        production_tile1.setColor(angle, angle, angle, angle);
+		production_tile1.setRotation(factory.facing.angleDeg());
 		production_tile1.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32* facing90.x),
 				factory.collisionCenter.y	- (35 * factory.facing.y) - (32 * facing90.y));
 		production_tile1.draw(batch);
 
 		angle = Math.min(1, Math.max(0, norm(scale_angle(factory.resourceAmount),0.25f,0.5f)));
 		production_tile2.setOrigin(0, 0);
-//		if(factory.ownShips>MAXSHIPS-1) {
-//			production_tile2.setColor(1, 0.1f,0.1f, MathUtils.sin(fade));
-//		} else {
-			production_tile2.setColor(angle, angle,angle, angle);
-//		}
-		production_tile2.setRotation(factory.facing.angle());
+        production_tile2.setColor(angle, angle, angle, angle);
+		production_tile2.setRotation(factory.facing.angleDeg());
 		production_tile2.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32 * facing90.x),
 				factory.collisionCenter.y	- (35 * factory.facing.y) - (32 * facing90.y));
 		production_tile2.draw(batch);
 
 		angle = Math.min(1, Math.max(0, norm(scale_angle(factory.resourceAmount),0.5f,0.75f)));
 		production_tile3.setOrigin(0, 0);
-//		if(factory.ownShips>MAXSHIPS-1) {
-//			production_tile3.setColor(1, 0.1f,0.1f, MathUtils.sin(fade));
-//		} else {
-			production_tile3.setColor(angle, angle,angle, angle);
-//		}
-		production_tile3.setRotation(factory.facing.angle());
+        production_tile3.setColor(angle, angle, angle, angle);
+		production_tile3.setRotation(factory.facing.angleDeg());
 		production_tile3.setPosition(factory.collisionCenter.x - (35* factory.facing.x)- (32 * facing90.x),
 				factory.collisionCenter.y	- (35 * factory.facing.y) - (32 * facing90.y));
 		production_tile3.draw(batch);
 
 		angle = Math.min(1, Math.max(0, norm(scale_angle(factory.resourceAmount),0.75f,1f)));
 		production_tile4.setOrigin(0, 0);
-//		if(factory.ownShips>MAXSHIPS-1) {
-//			production_tile4.setColor(1, 0.1f,0.1f, MathUtils.sin(fade));
-//		} else {
-			production_tile4.setColor(angle, angle,angle, angle);
-//		}
-		production_tile4.setRotation(factory.facing.angle());
+        production_tile4.setColor(angle, angle, angle, angle);
+		production_tile4.setRotation(factory.facing.angleDeg());
 		production_tile4.setPosition(factory.collisionCenter.x - (35 * factory.facing.x)- (32 * facing90.x),
 				factory.collisionCenter.y	- (35* factory.facing.y) - (32 * facing90.y));
 		production_tile4.draw(batch);
@@ -303,7 +256,7 @@ public class Production {
 				needle_velocity = Math.min(needle_velocity + 0.2f * Gdx.graphics.getDeltaTime(), 0.025f);
 				needle_angle = Math.max(needle_angle - needle_velocity, 0);
 				if (needle_angle == 0) {
-					needle_velocity *= Math.pow(-0.475f, Gdx.graphics.getDeltaTime());
+					needle_velocity *= (float) Math.pow(-0.475f, Gdx.graphics.getDeltaTime());
 				}
 			}
 		} else {
@@ -313,17 +266,17 @@ public class Production {
 		needle.setOrigin(0, 0);
 		needle.setPosition(factory.collisionCenter.x - (2 * factory.facing.x) - (-2 * facing90.x),
 				factory.collisionCenter.y	- (2 * factory.facing.y) - (-2 * facing90.y));
-		needle.setRotation(factory.facing.angle() + ((-needle_angle) * 360) - 90);
+		needle.setRotation(factory.facing.angleDeg() + ((-needle_angle) * 360) - 90);
 		needle.draw(batch);
 
 		production2.setOrigin(0, 0);
-		production2.setRotation(factory.facing.angle());
+		production2.setRotation(factory.facing.angleDeg());
 		production2.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32 * facing90.x),
 				factory.collisionCenter.y	- (35 * factory.facing.y) - (32 * facing90.y));
 		production2.draw(batch);
 
 		production3.setOrigin(0, 0);
-		production3.setRotation(factory.facing.angle());
+		production3.setRotation(factory.facing.angleDeg());
 		production3.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32 * facing90.x),
 				factory.collisionCenter.y	- (35 * factory.facing.y) - (32 * facing90.y));
 		production3.draw(batch);
@@ -333,28 +286,28 @@ public class Production {
 		if (factory.button_held) {
 			if (potential_cost > upgradeCost) {
 				upgrade_outline.setOrigin(0, 0);
-				upgrade_outline.setRotation(factory.facing.angle());
+				upgrade_outline.setRotation(factory.facing.angleDeg());
 				upgrade_outline.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32 * facing90.x),
 						factory.collisionCenter.y - (35 * factory.facing.y) - (32 * facing90.y));
 				upgrade_outline.draw(batch);
 				currentBuildingUnit = 3;
 			} else if (potential_cost > frigateCost) {
 				frigate_outline.setOrigin(0, 0);
-				frigate_outline.setRotation(factory.facing.angle());
+				frigate_outline.setRotation(factory.facing.angleDeg());
 				frigate_outline.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32* facing90.x),
 						factory.collisionCenter.y - (35 * factory.facing.y) - (32 * facing90.y));
 				frigate_outline.draw(batch);
 				currentBuildingUnit = 2;
 			} else if (potential_cost > bomberCost) {
 				bomber_outline.setOrigin(0, 0);
-				bomber_outline.setRotation(factory.facing.angle());
+				bomber_outline.setRotation(factory.facing.angleDeg());
 				bomber_outline.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32 * facing90.x),
 						factory.collisionCenter.y - (35 * factory.facing.y) - (32 * facing90.y));
 				bomber_outline.draw(batch);
 				currentBuildingUnit = 1;
 			} else if (potential_cost > fighterCost) {
 				fighter_outline.setOrigin(0, 0);
-				fighter_outline.setRotation(factory.facing.angle());
+				fighter_outline.setRotation(factory.facing.angleDeg());
 				fighter_outline.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32 * facing90.x),
 						factory.collisionCenter.y - (35 * factory.facing.y) - (32 * facing90.y));
 				fighter_outline.draw(batch);
@@ -369,7 +322,7 @@ public class Production {
 			if (health < Constants.lowHealthThreshold) {
 				float factor = health / Constants.lowHealthThreshold;
 				health_none.setOrigin(0, 0);
-				health_none.setRotation(factory.facing.angle());
+				health_none.setRotation(factory.facing.angleDeg());
 				health_none.setColor(1, factor * 0.3f, factor * 0.3f, 1);
 				health_none.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32 * facing90.x),
 						factory.collisionCenter.y - (35 * factory.facing.y) - (32 * facing90.y));
@@ -377,7 +330,7 @@ public class Production {
 			} else if (health < Constants.highHealthThreshold) {
 				float factor = (health - Constants.lowHealthThreshold) / (Constants.highHealthThreshold - Constants.lowHealthThreshold);
 				health_some.setOrigin(0, 0);
-				health_some.setRotation(factory.facing.angle());
+				health_some.setRotation(factory.facing.angleDeg());
 				health_some.setColor(1, factor * 0.7f + 0.3f, factor * 0.2f + 0.3f, 1);
 				health_some.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32 * facing90.x),
 						factory.collisionCenter.y - (35 * factory.facing.y) - (32*facing90.y));
@@ -385,7 +338,7 @@ public class Production {
 			} else {
 				float factor = (health - Constants.highHealthThreshold) / (1 - Constants.highHealthThreshold);
 				health_full.setOrigin(0, 0);
-				health_full.setRotation(factory.facing.angle());
+				health_full.setRotation(factory.facing.angleDeg());
 				health_full.setColor((1 - factor) * 0.3f + 0.7f, 1, factor * 0.4f + 0.6f, 1);
 				health_full.setPosition(factory.collisionCenter.x - (35 * factory.facing.x) - (32 * facing90.x),
 						factory.collisionCenter.y - (35 * factory.facing.y) - (32 * facing90.y));
@@ -399,6 +352,8 @@ public class Production {
 	   * Normalize a value to exist between 0 and 1 (inclusive).
 	   * Mathematically the opposite of lerp(), figures out what proportion
 	   * a particular value is relative to start and stop coordinates.
+       *
+       * @see MathUtils#norm(float, float, float) The norm() in MathUtils takes its parameters in a different order.
 	   */
 	  public float norm(float value, float start, float stop) {
 	    return (value - start) / (stop - start);

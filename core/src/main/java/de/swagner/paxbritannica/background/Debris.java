@@ -33,7 +33,7 @@ public class Debris extends Sprite {
 		this.position = position;
 		this.setPosition(position.x, position.y);
 
-		this.facing.rotate(random_direction);
+		this.facing.rotateDeg(random_direction);
 		this.setScale(random_scale, random_scale);
 
 		switch (MathUtils.random(0, 2)) {
@@ -57,7 +57,7 @@ public class Debris extends Sprite {
 
 		since_alive += delta;
 
-		facing.rotate((SPEED + random_speed) * delta).nor();
+		facing.rotateDeg((SPEED + random_speed) * delta).nor();
 		position.add(facing.scl((SPEED + random_speed) * delta));
 		this.setPosition(position.x, position.y);
 
@@ -90,7 +90,7 @@ public class Debris extends Sprite {
 
 		this.setPosition(position.x, position.y);
 
-		this.facing.rotate(random_direction);
+		this.facing.rotateDeg(random_direction);
 		this.setScale(random_scale, random_scale);
 	}
 }

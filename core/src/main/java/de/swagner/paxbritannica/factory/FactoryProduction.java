@@ -17,11 +17,11 @@ public class FactoryProduction extends Ship {
 	public float harvestRateUpgrade = 15f;
 	public float upgradesUsed = 0f;
 	public float resourceAmount = 20;
-	
+
 	public int ownShips = 0;
 
 	public boolean button_held = false;
-	
+
 	private boolean drawDamage= false;
 	float delta;
 
@@ -35,7 +35,7 @@ public class FactoryProduction extends Ship {
 	private Sprite current_damage = new Sprite();
 
 	public Production production = new Production(this);
-	
+
 	private Vector2 facing90 = new Vector2();
 
 	public FactoryProduction(int id, Vector2 position, Vector2 facing) {
@@ -78,13 +78,13 @@ public class FactoryProduction extends Ship {
 		current_damage = light_damage1;
 
 		this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);
-		
+
 	}
 
 	@Override
 	public void draw(Batch batch) {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime());
-		
+
 		resourceAmount = Math.min(2000, resourceAmount + (harvestRate * delta));
 		super.draw(batch);
 		production.draw(batch);
@@ -122,15 +122,15 @@ public class FactoryProduction extends Ship {
 			}
 			drawDamage = true;
 		}
-		
+
 		if(drawDamage) {
 			facing90.set(facing);
-			facing90.rotate(90).nor();
+			facing90.rotate90(1).nor();
 
 			current_damage.setOrigin(0, 0);
 			current_damage.setPosition(collisionCenter.x - (90 * facing.x) - (60 * facing90.x), collisionCenter.y - (90 * facing.y)
 					- (60 * facing90.y));
-			current_damage.setRotation(facing.angle());
+			current_damage.setRotation(facing.angleDeg());
 			current_damage.setColor(1, 1, 1, MathUtils.random());
 			current_damage.draw(batch);
 		}

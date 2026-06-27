@@ -17,7 +17,7 @@ public class Bomber extends Ship {
 		turnSpeed = 45f;
 		accel = 45.0f;
 		hitPoints = 440;
-		
+
 		switch (id) {
 		case 1:
 			this.set(Resources.getInstance().bomberP1);
@@ -38,14 +38,14 @@ public class Bomber extends Ship {
 	@Override
 	public void draw(Batch batch) {
 		ai.update();
-		
+
 		super.draw(batch);
 	}
 
 	public void shoot(int approach) {
-		 Vector2 bombFacing = new Vector2().set(facing).rotate(90*approach);
+		 Vector2 bombFacing = new Vector2().set(facing).rotateDeg(90*approach);
 		 GameInstance.getInstance().bullets.add(new Bomb(id, collisionCenter, bombFacing));
-		
+
 	}
 
 }
