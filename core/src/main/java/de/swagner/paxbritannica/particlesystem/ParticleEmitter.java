@@ -17,7 +17,7 @@ public class ParticleEmitter extends Sprite {
 	float damping = 1;
 	float delta_scale;
 	Array<Particle> particles = new Array<>(false, maxParticle);
-	private final Pool<Particle> freeParticles = new Pool<Particle>(maxParticle,maxParticle) {
+	private final Pool<Particle> freeParticles = new Pool<Particle>(maxParticle, maxParticle) {
 		@Override
 		protected Particle newObject() {
 			return new Particle();
@@ -35,12 +35,12 @@ public class ParticleEmitter extends Sprite {
 			Particle particle = particles.get(i);
 			if (particle.life > 0) {
 				updateParticle(particle);
-				float dx = this.getWidth() / 2 * particle.scale;
-				float dy = this.getHeight() / 2 * particle.scale;
-				this.setColor(1, 1, 1, Math.max(particle.life / this.life,0));
+				float dx = this.getWidth() * 0.5f * particle.scale;
+				float dy = this.getHeight() * 0.5f * particle.scale;
+				this.setColor(1, 1, 1, Math.max(particle.life / this.life, 0));
 				this.setScale(particle.scale);
-				this.setPosition(particle.position.x -dx, particle.position.y -dy);
-				if(!(particle.position.y -dy>=-10 && particle.position.y -dy<=10) && !(particle.position.x -dx>=-10 && particle.position.x -dx<=10)) {
+				this.setPosition(particle.position.x - dx, particle.position.y - dy);
+				if(!(particle.position.y - dy >= -10 && particle.position.y - dy <= 10) && !(particle.position.x - dx >= -10 && particle.position.x - dx <= 10)) {
 					super.draw(batch);
 				} else {
 					particle.life = 0;
@@ -58,17 +58,17 @@ public class ParticleEmitter extends Sprite {
 
 		if (particle.life > 0) {
 			particle.life -= delta;
-			particle.position.add(particle.velocity.x * delta*10,particle.velocity.y * delta*10);
+			particle.position.add(particle.velocity.x * delta * 10,particle.velocity.y * delta * 10);
 			particle.velocity.scl((float) Math.pow(damping, delta));
-			particle.scale += this.delta_scale * delta/5f;
+			particle.scale += this.delta_scale * delta / 5f;
 		}
 	}
 
 	public void addParticle(Vector2 position, Vector2 velocity, float life, float scale) {
 	     if(particles.size>maxParticle) return;
-	     if(Gdx.graphics.getFramesPerSecond()<25 && !(this instanceof ExplosionParticleEmitter)) return;
+	     if(Gdx.graphics.getFramesPerSecond() < 25 && !(this instanceof ExplosionParticleEmitter)) return;
 		 Particle particle = freeParticles.obtain();
-	     particle.setup(position,velocity,life,scale);
+	     particle.setup(position, velocity, life, scale);
 	     particles.add(particle);
 	}
 
