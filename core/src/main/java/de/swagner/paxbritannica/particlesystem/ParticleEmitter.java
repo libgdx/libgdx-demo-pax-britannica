@@ -17,7 +17,7 @@ public class ParticleEmitter extends Sprite {
 	float damping = 1;
 	float delta_scale;
 	Array<Particle> particles = new Array<>(false, maxParticle);
-	private Pool<Particle> freeParticles = new Pool<Particle>(maxParticle,maxParticle) {
+	private final Pool<Particle> freeParticles = new Pool<Particle>(maxParticle,maxParticle) {
 		@Override
 		protected Particle newObject() {
 			return new Particle();
