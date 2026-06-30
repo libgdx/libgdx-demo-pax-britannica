@@ -10,9 +10,9 @@ import de.swagner.paxbritannica.Ship;
 
 public class Fighter extends Ship {
 
-	private float shotCooldownTime = 6f;
-	private float shotCapacity = 5f;
-	private float shotReloadRate = 1f;
+	private static final float shotCooldownTime = 6f;
+	private static final float shotCapacity = 5f;
+	private static final float shotReloadRate = 1f;
 
 	private float shots = shotCapacity;
 	private float cooldown = 0;
@@ -26,7 +26,7 @@ public class Fighter extends Ship {
 		turnSpeed = 120f;
 		accel = 120.0f;
 		hitPoints = 40;
-		
+
 		switch (id) {
 		case 1:
 			this.set(Resources.getInstance().fighterP1);
@@ -47,7 +47,7 @@ public class Fighter extends Ship {
 	@Override
 	public void draw(Batch batch) {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime());
-		
+
 		ai.update();
 
 		cooldown = Math.max(0, cooldown - delta*50f);

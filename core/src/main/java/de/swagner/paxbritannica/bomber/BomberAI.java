@@ -9,9 +9,9 @@ import de.swagner.paxbritannica.Targeting;
 import de.swagner.paxbritannica.frigate.Frigate;
 
 public class BomberAI {
-	private float APPROACH_DISTANCE = 210;
-	private float COOLDOWN_DURATION = 0.6f;
-	private float MAX_SHOTS = 4;
+	private static final float APPROACH_DISTANCE = 210;
+    private static final float COOLDOWN_DURATION = 0.6f;
+    private static final float MAX_SHOTS = 4;
 
 	private float cooldown_timer = 0;
 	private float shots_counter = MAX_SHOTS;
@@ -23,13 +23,13 @@ public class BomberAI {
 	// 2 = shoot
 	// 3 = move_away
 	private int state = 0;
-	
-	//recylce
-	Vector2 target_direction = new Vector2();
+
+	//recycle
+	final Vector2 target_direction = new Vector2();
 
 	public Ship target;
 
-	private Bomber bomber;
+	private final Bomber bomber;
 
 	public BomberAI(Bomber bomber) {
 		this.bomber = bomber;
@@ -40,27 +40,15 @@ public class BomberAI {
 		if (target == null) {
 			target = Targeting.getNearestOfType(bomber, 3);
 		}
-		// if (target == null) {
-		// target = Targeting.get_nearest_of_type(bomber, "bomber");
-		// } else
-		// return;
-		// if (target == null) {
-		// target = Targeting.get_nearest_of_type(bomber, "fighter");
-		// } else
-		// return;
 	}
 
 	public void reviseApproach() {
-		if (MathUtils.random() < 0.5) {
-			approach_sign = 1;
-		} else {
-			approach_sign = -1;
-		}
-	}
+        approach_sign = MathUtils.randomSign();
+    }
 
 	public void update() {
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime());
-		
+
 		if (target == null || !target.alive || MathUtils.random() < 0.005f) {
 			Ship old_target = target;
 			retarget();

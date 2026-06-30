@@ -8,10 +8,10 @@ import de.swagner.paxbritannica.Targeting;
 
 public class FighterAI {
 	// shot range
-	private float shot_range = 200;
+	private static final float shot_range = 200;
 
 	// try to stay this far away when you're out of ammo
-	private float run_distance = 200;
+	private static final float run_distance = 200;
 
 	// true when we've shot everything and want to make a distance, false means
 	// we're approaching to attack
@@ -19,11 +19,11 @@ public class FighterAI {
 
 	public Ship target;
 	private boolean on_screen = true;
-	
+
 	//recycle vars
 	Vector2 to_target = new Vector2();
 
-	private Fighter fighter;
+	private final Fighter fighter;
 
 	public FighterAI(Fighter fighter) {
 		this.fighter = fighter;
@@ -44,7 +44,7 @@ public class FighterAI {
 	}
 
 	public void update() {
-		// if we go from on to off screen, retarget
+		// if we go from on to off-screen, retarget
 		boolean new_on_screen = Targeting.onScreen(fighter.collisionCenter);
 		if (on_screen && !new_on_screen || target == null || !target.alive || MathUtils.random() < 0.005f) {
 			retarget();

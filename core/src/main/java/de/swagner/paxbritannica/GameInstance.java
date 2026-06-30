@@ -69,7 +69,7 @@ public class GameInstance {
 
 	public void bulletHit(Ship ship, Bullet bullet) {
 		bullet.facing.nor();
-		float offset=0;
+		float offset = 0;
 		if(ship instanceof FactoryProduction) offset = 50;
 		if(ship instanceof Frigate) offset = 20;
 		if(ship instanceof Bomber) offset = 10;
