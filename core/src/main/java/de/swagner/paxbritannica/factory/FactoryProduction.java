@@ -22,21 +22,21 @@ public class FactoryProduction extends Ship {
 
 	public boolean button_held = false;
 
-	private boolean drawDamage= false;
+	private boolean drawDamage = false;
 	float delta;
 
-	private Sprite heavy_damage1 = new Sprite();
-	private Sprite heavy_damage2 = new Sprite();
-	private Sprite heavy_damage3 = new Sprite();
-	private Sprite light_damage1 = new Sprite();
-	private Sprite light_damage2 = new Sprite();
-	private Sprite light_damage3 = new Sprite();
+	private final Sprite heavy_damage1;
+	private final Sprite heavy_damage2;
+	private final Sprite heavy_damage3;
+	private final Sprite light_damage1;
+	private final Sprite light_damage2;
+	private final Sprite light_damage3;
 
-	private Sprite current_damage = new Sprite();
+	private Sprite current_damage;
 
 	public Production production = new Production(this);
 
-	private Vector2 facing90 = new Vector2();
+	private final Vector2 facing90 = new Vector2();
 
 	public FactoryProduction(int id, Vector2 position, Vector2 facing) {
 		super(id, position, facing);
@@ -69,12 +69,12 @@ public class FactoryProduction extends Ship {
 			break;
 		}
 
-		light_damage1.set(Resources.getInstance().factoryLightDamage1);
-		light_damage2.set(Resources.getInstance().factoryLightDamage2);
-		light_damage3.set(Resources.getInstance().factoryLightDamage3);
-		heavy_damage1.set(Resources.getInstance().factoryHeavyDamage1);
-		heavy_damage2.set(Resources.getInstance().factoryHeavyDamage2);
-		heavy_damage3.set(Resources.getInstance().factoryHeavyDamage3);
+		light_damage1 = Resources.getInstance().factoryLightDamage1;
+		light_damage2 = Resources.getInstance().factoryLightDamage2;
+		light_damage3 = Resources.getInstance().factoryLightDamage3;
+		heavy_damage1 = Resources.getInstance().factoryHeavyDamage1;
+		heavy_damage2 = Resources.getInstance().factoryHeavyDamage2;
+		heavy_damage3 = Resources.getInstance().factoryHeavyDamage3;
 		current_damage = light_damage1;
 
 		this.setOrigin(this.getWidth() / 2, this.getHeight() / 2);

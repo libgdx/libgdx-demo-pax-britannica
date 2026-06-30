@@ -12,11 +12,8 @@ import de.swagner.paxbritannica.frigate.Frigate;
 
 public class HardEnemyProduction extends FactoryProduction {
 
-	int action_index = 0;
 	float timeToHold = 0;
 	float accumulated_frames = 0;
-	float frames_to_wait = 0;
-	int script_index = 0;
 	float delta;
 
 	int action = -1;
@@ -27,7 +24,7 @@ public class HardEnemyProduction extends FactoryProduction {
 	int ownFighters = 0;
 	int ownBombers = 0;
 	int ownFrigates = 0;
-	
+
 	public HardEnemyProduction(int id, Vector2 position, Vector2 facing) {
 		super(id, position, facing);
 	}
@@ -52,13 +49,13 @@ public class HardEnemyProduction extends FactoryProduction {
 	}
 
 	public void next_action() {
-		action = -1;		
+		action = -1;
 		enemyFighters = 0;
 		enemyBombers = 0;
 		enemyFrigates = 0;
 		ownFighters = 0;
 		ownBombers = 0;
-		ownFrigates = 0;				
+		ownFrigates = 0;
 		accumulated_frames = 0;
 		timeToHold = 0;
 
@@ -71,7 +68,7 @@ public class HardEnemyProduction extends FactoryProduction {
 			}
 			else ownFighters++;
 		}
-		
+
 		for (Ship bomber : GameInstance.getInstance().bombers) {
 			if(bomber.id != this.id) {
 				if(((Bomber) bomber).ai.target != null && ((Bomber) bomber).ai.target.id == this.id) {
@@ -80,7 +77,7 @@ public class HardEnemyProduction extends FactoryProduction {
 			}
 			else ownBombers++;
 		}
-		
+
 		for (Ship frigate : GameInstance.getInstance().frigates) {
 			if(frigate.id != this.id) {
 				if(((Frigate) frigate).ai.target != null && ((Frigate) frigate).ai.target.id == this.id) {
@@ -89,7 +86,7 @@ public class HardEnemyProduction extends FactoryProduction {
 			}
 			else ownFrigates++;
 		}
-		
+
 		// what to do
 		if(resourceAmount < 80) action = -1;
 		else if((ownFighters < 4 || enemyBombers > 2) && enemyFighters < 11 && enemyFrigates < 4 && ownFighters < 20) action = 0;
@@ -98,7 +95,7 @@ public class HardEnemyProduction extends FactoryProduction {
 		else if(enemyFighters >= 5 && ownFrigates < 3) action = 2;
 		else if(ownFrigates < 1) action = 2;
 		else if(ownFighters < 10) action = 0;
-		else if(ownBombers > 4 && ownFrigates >= 1 && ownFighters >= 10) action = 3;
+		else if(ownBombers > 4) action = 3;
 	}
 
 }

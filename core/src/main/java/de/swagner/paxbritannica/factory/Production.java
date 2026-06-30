@@ -17,12 +17,7 @@ public class Production {
 
 	public float BUILDING_SPEED = 100;
 
-	public int MAXSHIPS = 100;
-
-	private float SEGMENTS = 32;
-	private float RADIUS = 32;
-	private float DRAW_OFFSET = -4;
-	private float SPAWN_OFFSET = 47;
+	private static final float SPAWN_OFFSET = 47;
 
 	public float fighterCost = 50;
 	public float bomberCost = 170;
@@ -33,7 +28,7 @@ public class Production {
 	private float needle_angle = 0;
 	private float needle_velocity = 0;
 
-	private Vector2 facing90 = new Vector2();
+	private final Vector2 facing90 = new Vector2();
 
 	public boolean halt_production = false;
 
@@ -61,16 +56,10 @@ public class Production {
 
 	public float fade = 0;
 
-//	public ImmediateModeRenderer renderer = new ImmediateModeRenderer();
-//	OrthographicCamera camera;
-
 	private FactoryProduction factory;
 
 	public Production(FactoryProduction factory) {
 		this.factory = factory;
-
-//		camera = new OrthographicCamera(800, 480);
-//		camera.translate(400, 240, 0);
 
 		needle = Resources.getInstance().needle;
 		needle.setOrigin(needle.getHeight() / 2, needle.getWidth() / 2);
@@ -109,29 +98,17 @@ public class Production {
 	}
 
 	/**
-	 * Span new Ship
-	 *
+	 * Spawn a new Ship.
+	 * <br>
+     * <pre>
 	 * 1 = Fighter
 	 * 2 = Bomber
 	 * 3 = Frigate
 	 * 4 = Upgrade
-	 * @param unitType
+     * </pre>
+	 * @param unitType 1: Fighter, 2: Bomber, 3: Frigate, 4: Upgrade
 	 */
 	public void spawn(int unitType) {
-//		factory.ownShips = 0;
-//		for (Ship fighter : GameInstance.getInstance().fighters) {
-//			if(fighter.id == factory.id) factory.ownShips++;
-//		}
-//		for (Ship bomber : GameInstance.getInstance().bombers) {
-//			if(bomber.id != factory.id) factory.ownShips++;
-//		}
-//		for (Ship frigate : GameInstance.getInstance().frigates) {
-//			if(frigate.id != factory.id) factory.ownShips++;
-//		}
-//		if(factory.ownShips>MAXSHIPS) {
-//			return;
-//		}
-
 
 		Vector2 spawn_pos = new Vector2(factory.collisionCenter.x + (SPAWN_OFFSET * factory.facing.x),
 				factory.collisionCenter.y + (SPAWN_OFFSET * factory.facing.y));
