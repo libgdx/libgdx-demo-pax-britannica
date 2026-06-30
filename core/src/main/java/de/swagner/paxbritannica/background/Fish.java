@@ -14,17 +14,17 @@ public class Fish extends Sprite {
 	private float LIFETIME = MathUtils.random(8, 12);
 	private float FADE_TIME = 2;
 
-	private float random_direction = MathUtils.random()<0.5f ? 1:-1;
+	private float random_direction = MathUtils.randomSign();
 	private float random_scale = MathUtils.random() * 0.75f + 0.2f;
 	private float random_speed = MathUtils.random() + 0.5f;
 	private float random_opacity = MathUtils.random() * 0.1f + 0.1f;
 
-	private Vector2 position = new Vector2();
+	private Vector2 position;
 
 	public boolean alive = true;
 
 	private float since_alive = 0;
-	
+
 	float delta;
 
 	public Fish(Vector2 position) {
@@ -60,7 +60,7 @@ public class Fish extends Sprite {
 			this.set(Resources.getInstance().fish8);
 			break;
 		}
-		
+
 		if(random_direction==-1) {
 			flip(true, false);
 		}
@@ -69,14 +69,14 @@ public class Fish extends Sprite {
 	@Override
 	public void draw(Batch batch) {
 		super.draw(batch);
-		
+
 		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime());
-		
+
 		since_alive += delta/2.f;
 		position.add((SPEED + random_speed) * delta * 5.f*random_direction,0);
 		this.setPosition(position.x, position.y);
 
-		
+
 		if (since_alive < FADE_TIME) {
 			super.setColor(1, 1, 1, Math.min((since_alive / FADE_TIME)*random_opacity,random_opacity));
 		} else {
@@ -86,7 +86,7 @@ public class Fish extends Sprite {
 			alive = false;
 		}
 	}
-	
+
 	public void reset() {
 		SPEED = 0.2f;
 		LIFETIME = MathUtils.random(8, 12);
@@ -96,10 +96,10 @@ public class Fish extends Sprite {
 		random_scale = MathUtils.random() * 0.75f + 0.2f;
 		random_speed = MathUtils.random() + 0.5f;
 		random_opacity = MathUtils.random() * 0.1f + 0.1f;
-		
+
 		alive = true;
 		since_alive = 0;
-		
+
 		this.position = new Vector2(MathUtils.random(-100, 800),MathUtils.random(-100, 400));
 
 		if(random_direction==-1) {

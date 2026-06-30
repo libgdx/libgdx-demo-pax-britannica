@@ -4,12 +4,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 
+import com.badlogic.gdx.utils.Disposable;
 import de.swagner.paxbritannica.Resources;
 
-public class BackgroundFXRenderer {
+public class BackgroundFXRenderer implements Disposable {
 
 	SpriteBatch backgroundFXBatch;
 	Array<Debris> debrises = new Array<>();
@@ -42,10 +42,7 @@ public class BackgroundFXRenderer {
 		}
 	}
 
-	float stateTime = 0;
-	Vector3 lerpTarget = new Vector3();
-
-	public void render() {
+    public void render() {
 		backgroundBatch.begin();
 		background.draw(backgroundBatch);
 		backgroundBatch.end();

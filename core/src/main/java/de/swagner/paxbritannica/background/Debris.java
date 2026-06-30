@@ -19,16 +19,14 @@ public class Debris extends Sprite {
 	private float random_speed = (MathUtils.random() * 2f) - 1f;
 	private float random_opacity = MathUtils.random() * 0.35f + 0.6f;
 
-	private Vector2 position = new Vector2();
+	private Vector2 position;
 	private Vector2 facing = new Vector2(1, 0);
 
 	public boolean alive = true;
 
 	private float since_alive = 0;
 
-	private float delta;
-
-	public Debris(Vector2 position) {
+    public Debris(Vector2 position) {
 		super();
 		this.position = position;
 		this.setPosition(position.x, position.y);
@@ -53,7 +51,7 @@ public class Debris extends Sprite {
 	public void draw(Batch batch) {
 		super.draw(batch);
 
-		delta = Math.min(0.06f, Gdx.graphics.getDeltaTime());
+        float delta = Math.min(0.06f, Gdx.graphics.getDeltaTime());
 
 		since_alive += delta;
 
