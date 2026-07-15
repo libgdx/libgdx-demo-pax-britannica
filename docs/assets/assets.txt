@@ -1,8 +1,6 @@
 data/audio/music.mp3
 data/spritepack/credits.png
-data/spritepack/pack.pack
-data/spritepack/packhigh.pack
-data/spritepack/singleSprites1.png
-data/spritepack/sprites1.png
-data/spritepack/sprites2.png
+data/spritepack/pack.atlas
+data/spritepack/pack.png
+data/spritepack/packhigh.atlas
 data/spritepack/title.png
