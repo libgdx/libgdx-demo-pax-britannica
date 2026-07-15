@@ -1,7 +1,7 @@
 package de.swagner.paxbritannica.teavm;
 
 import com.github.xpenatan.gdx.teavm.backends.shared.config.AssetFileHandle;
-import com.github.xpenatan.gdx.teavm.backends.shared.config.compiler.TeaCompiler;
+import com.github.xpenatan.gdx.teavm.backends.shared.config.builder.TeaBuilder;
 import com.github.xpenatan.gdx.teavm.backends.web.config.backend.WebBackend;
 import java.io.File;
 import org.teavm.tooling.TeaVMSourceFilePolicy;
@@ -19,15 +19,14 @@ public class TeaVMBuilder {
             if ("debug".equals(arg)) debug = true;
             else if ("run".equals(arg)) startJetty = true;
         }
-        new TeaCompiler(
-            new WebBackend()
-                .setHtmlWidth(1024) /* Change this to fit your game's requirements. */
-                .setHtmlHeight(550) /* Change this to fit your game's requirements. */
-                .setHtmlTitle("Pax Britannica")
+        WebBackend backend = new WebBackend()
+            .setHtmlWidth(1024) /* Change this to fit your game's requirements. */
+            .setHtmlHeight(550) /* Change this to fit your game's requirements. */
+            .setHtmlTitle("Pax Britannica")
 //                .setWebAssembly(true) /* Uncomment this line to use WASM output instead of JavaScript output. */
-                .setStartJettyAfterBuild(startJetty)
-                .setJettyPort(8080)
-        )
+            .setStartJettyAfterBuild(startJetty)
+            .setJettyPort(8080);
+        new TeaBuilder(backend)
             .addAssets(new AssetFileHandle("../assets"))
 
             .setOptimizationLevel(debug ? TeaVMOptimizationLevel.SIMPLE : TeaVMOptimizationLevel.ADVANCED)
@@ -39,6 +38,6 @@ public class TeaVMBuilder {
             .addSourceFileProvider(new DirectorySourceFileProvider(new File("../core/src/main/java/")))
             // You can also register any classes or packages that require reflection here:
             //.addReflectionClass("de.swagner.paxbritannica.reflect")
-            .build(new File("build/dist"));
+            .build(new File("build/dist/" + (backend.isWebAssembly ? "wasm" : "js")));
     }
 }
